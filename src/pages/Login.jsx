@@ -93,20 +93,25 @@ const Login = ({ setIsLoggedIn }) => {
   const handleGoogle = async () => {
     setLoading(true);
     setError("");
+    const provider = new GoogleAuthProvider();
     try {
-      const provider = new GoogleAuthProvider();
-      // Mobile browsers block popups — use redirect instead
-      const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      if (isMobile) {
-        await signInWithRedirect(auth, provider);
-        // page will navigate away — nothing after this runs
-        return;
-      }
-      // Desktop: use popup
+      // Popup works on both desktop and mobile (triggered from a user gesture).
+      // Redirect is unreliable on mobile Safari due to ITP blocking cross-site cookies.
       const result = await signInWithPopup(auth, provider);
       await ensureUserProfile(result.user);
       setIsLoggedIn(true); navigate("/");
     } catch (err) {
+      if (err.code === "auth/popup-blocked") {
+        // Genuine popup block — fall back to redirect
+        try {
+          await signInWithRedirect(auth, provider);
+        } catch (redirectErr) {
+          setLoading(false);
+          const msg = cleanError(redirectErr.message);
+          if (msg) setError(msg);
+        }
+        return;
+      }
       const msg = cleanError(err.message);
       if (msg) setError(msg);
       setLoading(false);
