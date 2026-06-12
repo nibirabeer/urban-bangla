@@ -1,0 +1,230 @@
+.navbar {
+  background: var(--black);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.navbar-logo-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.navbar-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.navbar-brand-en {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--white);
+}
+
+.navbar-brand-bn {
+  font-family: var(--font-bangla);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+/* Toggle — only shows on mid-width (tablet) */
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: 1px solid var(--border-2);
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-left: 8px;
+}
+.navbar-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+/* Menu */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 2px;
+  align-items: center;
+}
+
+.nav-link {
+  font-family: var(--font-bangla);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: none;
+  background: none;
+  transition: background-color 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+
+.nav-link:hover { color: var(--white); background: var(--border); }
+.nav-link.active { color: var(--gold); background: rgba(201,169,110,0.1); }
+.about-btn { cursor: pointer; }
+
+/* Theme cycle button (guest navbar) */
+.navbar-theme-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 8px;
+  background: transparent; border: 1px solid var(--border-2);
+  color: var(--muted); cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+.navbar-theme-btn:hover { border-color: var(--green); color: var(--white); background: rgba(0,106,78,0.08); }
+
+/* About drawer */
+.about-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.about-drawer {
+  background: var(--card-bg);
+  border: 1px solid var(--border-2);
+  border-radius: 20px;
+  padding: 48px 40px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+.about-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: none;
+  border: 1px solid var(--border-2);
+  color: var(--muted);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.about-logo-wrap { margin-bottom: 16px; }
+.about-logo {
+  width: 72px; height: 72px;
+  border-radius: 14px;
+  margin: 0 auto;
+}
+
+.about-title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.about-title span { color: var(--gold); }
+
+.about-desc {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.about-desc-en {
+  color: var(--muted-2);
+  font-size: 13px;
+  font-style: italic;
+  margin-bottom: 28px;
+}
+
+.about-close-btn {
+  background: var(--gold);
+  color: var(--black);
+  border: none;
+  padding: 11px 28px;
+  border-radius: 8px;
+  font-family: var(--font-bangla);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Tablet: show hamburger, slide-down menu */
+@media (max-width: 900px) {
+  .navbar-toggle { display: flex; }
+
+  .navbar-menu {
+    display: none;
+    position: fixed;
+    top: 68px; left: 0; right: 0;
+    background: var(--off-black);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 20px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    z-index: 99;
+  }
+  .navbar-menu.open { display: flex; }
+
+  .navbar-links { flex-direction: column; width: 100%; gap: 2px; }
+  .nav-link { width: 100%; display: block; padding: 13px 16px; font-size: 15px; }
+}
+
+/* Phone: bottom nav handles everything — hide hamburger & menu completely */
+@media (max-width: 640px) {
+  .navbar-toggle { display: none; }
+  .navbar-menu   { display: none !important; }
+
+  .navbar-container { padding: 0 16px; }
+
+  /* Theme button is now the only header action on phone */
+  .navbar-theme-btn {
+    width: 38px; height: 38px;
+  }
+}

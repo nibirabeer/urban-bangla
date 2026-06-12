@@ -1,0 +1,382 @@
+.om-loading {
+  padding: 40px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.om-title {
+  font-family: var(--font-bangla);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.om-empty {
+  color: var(--muted-2);
+  text-align: center;
+  padding: 40px;
+}
+
+/* Order list */
+.om-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.om-card {
+  background: var(--black);
+  border: 1px solid var(--border-2);
+  border-radius: 12px;
+  display: flex;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.om-card:hover {
+  border-color: var(--border);
+}
+
+.om-img {
+  width: 90px;
+  flex-shrink: 0;
+  object-fit: cover;
+  background: var(--border);
+}
+
+.om-details {
+  flex: 1;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.om-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.om-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+
+.om-user {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.om-status {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--border);
+  padding: 4px 10px;
+  border-radius: 100px;
+  color: var(--muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.om-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.om-meta b {
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* Actions */
+.om-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.om-edit-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.om-edit-btn {
+  background: var(--border);
+  border: none;
+  color: var(--white);
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-family: var(--font-bangla);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.om-edit-btn:hover {
+  background: var(--border-2);
+}
+
+.om-del-btn {
+  background: transparent;
+  border: 1px solid rgba(244, 42, 65, 0.25);
+  color: var(--red);
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-family: var(--font-bangla);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.om-del-btn:hover {
+  background: rgba(244, 42, 65, 0.08);
+  border-color: rgba(244, 42, 65, 0.5);
+}
+
+.om-select {
+  background: var(--black);
+  border: 1px solid var(--border-2);
+  color: var(--white);
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-family: var(--font-bangla);
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.om-select:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+.om-save {
+  background: var(--green);
+  color: var(--white);
+  border: none;
+  padding: 7px 16px;
+  border-radius: 6px;
+  font-family: var(--font-bangla);
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.om-save:hover {
+  background: var(--green-light);
+}
+
+.om-cancel {
+  background: transparent;
+  border: 1px solid var(--border-2);
+  color: var(--muted);
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-family: var(--font-bangla);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.om-cancel:hover {
+  border-color: var(--white-2);
+  color: var(--white);
+}
+
+.om-products {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.om-product-line {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid var(--border-2);
+  border-radius: 10px;
+  background: var(--card-bg);
+}
+
+.om-product-img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.om-product-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.om-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.om-payment-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.om-payment-pending {
+  background: rgba(201, 169, 110, 0.12);
+  color: var(--gold);
+  border: 1px solid rgba(201, 169, 110, 0.25);
+}
+
+.om-payment-verified {
+  background: rgba(0, 106, 78, 0.12);
+  color: var(--green-light);
+  border: 1px solid rgba(0, 106, 78, 0.35);
+}
+
+.om-payment-rejected {
+  background: rgba(244, 42, 65, 0.1);
+  color: var(--red);
+  border: 1px solid rgba(244, 42, 65, 0.28);
+}
+
+.om-pay-btn {
+  background: rgba(201, 169, 110, 0.1);
+  border: 1px solid rgba(201, 169, 110, 0.25);
+  color: var(--gold);
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-family: var(--font-bangla);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.om-pay-btn:hover {
+  background: rgba(201, 169, 110, 0.18);
+  border-color: rgba(201, 169, 110, 0.45);
+}
+
+.om-date { opacity: 0.7; }
+
+/* TRACKING SECTION */
+
+.om-tracking-section {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  background: rgba(0,106,78,0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.om-tracking-label {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted);
+}
+
+.om-notified-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: rgba(0,106,78,0.15); color: #4dffa6;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.5px;
+  padding: 2px 8px; border-radius: 100px;
+  margin-left: 6px;
+}
+
+/* Add tracking button */
+.om-add-track-btn {
+  background: transparent; border: 1px dashed var(--border-2);
+  color: var(--muted); padding: 8px 16px; border-radius: 8px;
+  font-size: 12px; font-weight: 600; font-family: inherit;
+  cursor: pointer; transition: all 0.15s;
+  align-self: flex-start;
+}
+.om-add-track-btn:hover { border-color: var(--green); color: var(--green-bright); }
+
+/* Tracking form */
+.om-track-form {
+  display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+}
+.om-track-select { min-width: 130px; flex-shrink: 0; }
+.om-track-input  { flex: 1; min-width: 160px; font-family: monospace; letter-spacing: 0.5px; }
+
+/* Tracking info display */
+.om-track-info {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.om-track-row {
+  display: flex; align-items: center; gap: 10px; flex: 1; flex-wrap: wrap;
+}
+.om-track-courier {
+  font-size: 12px; font-weight: 700; color: var(--white-2);
+  background: var(--border); padding: 3px 10px; border-radius: 6px;
+}
+.om-track-code {
+  font-family: monospace; font-size: 14px; font-weight: 700;
+  color: var(--gold); letter-spacing: 1px;
+}
+.om-track-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-weight: 700; color: var(--green-bright);
+  text-decoration: none;
+  background: rgba(0,106,78,0.15); border: 1px solid rgba(0,106,78,0.25);
+  padding: 3px 10px; border-radius: 6px;
+  transition: background 0.15s;
+}
+.om-track-link:hover { background: rgba(0,106,78,0.25); }
+
+.om-track-edit-btn {
+  background: transparent; border: 1px solid var(--border-2);
+  color: var(--muted); padding: 4px 12px; border-radius: 6px;
+  font-size: 11px; font-weight: 600; font-family: inherit;
+  cursor: pointer; transition: all 0.15s;
+}
+.om-track-edit-btn:hover { border-color: var(--white-2); color: var(--white); }
+
+/* Send email button */
+.om-email-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+.om-email-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(84,105,212,0.1); border: 1px solid rgba(84,105,212,0.3);
+  color: #8fa5ff; padding: 7px 16px; border-radius: 8px;
+  font-size: 12px; font-weight: 700; font-family: inherit;
+  cursor: pointer; transition: all 0.15s;
+}
+.om-email-btn:hover:not(:disabled) { background: rgba(84,105,212,0.2); border-color: rgba(84,105,212,0.5); }
+.om-email-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.om-email-sent {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700; color: #4dffa6;
+}
+.om-email-error {
+  font-size: 12px; color: var(--red); margin: 0;
+}

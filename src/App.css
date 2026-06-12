@@ -1,0 +1,302 @@
+:root {
+  /* URBAN বাংলা Brand Colors */
+  --black:       #0a0a0a;
+  --off-black:   #111111;
+  --card-bg:     #141414;
+  --border:      #1e1e1e;
+  --border-2:    #2a2a2a;
+
+  /* Brand Palette – logo inspired */
+  --gold:        #C9A96E;   /* warm tan/gold from logo */
+  --gold-light:  #E2C99A;
+  --gold-dark:   #A07840;
+
+  /* Bangladesh Green */
+  --green:       #006A4E;   /* official Bangladesh flag green */
+  --green-light: #00875F;
+  --green-bright:#00FF8C;   /* electric accent */
+
+  /* Bangladesh Red */
+  --red:         #F42A41;   /* flag red */
+  --red-dark:    #C41E30;
+
+  --white:       #F5F2EC;
+  --white-2:     #E8E4DC;
+  --muted:       #666666;
+  --muted-2:     #444444;
+
+  /* Typography */
+  --font-display: 'Teko', sans-serif;
+  --font-bangla:  'DM Sans', sans-serif;
+  --font-body:    'Barlow Condensed', sans-serif;
+}
+
+/* ════════════════════════════════════════════════
+   LIGHT THEME — balanced, vibrant palette
+   Green family: fresh emerald (not dark forest)
+   Gold family:  rich warm amber
+════════════════════════════════════════════════ */
+[data-theme="light"] {
+  /* ── Backgrounds: warm whites, clear depth hierarchy ── */
+  --black:        #F5F3EF;   /* page bg — warm ivory */
+  --off-black:    #ECEAE5;   /* sections / slightly elevated */
+  --card-bg:      #FFFFFF;   /* cards & surfaces */
+
+  /* ── Borders: visible without being harsh ── */
+  --border:       #E3E0DA;   /* hairline */
+  --border-2:     #CAC7C0;   /* interactive / standard */
+
+  /* ── Typography: clear contrast hierarchy ── */
+  --white:        #141312;   /* primary text */
+  --white-2:      #312F2C;   /* secondary text */
+  --muted:        #615E59;   /* muted (passes WCAG AA on white) */
+  --muted-2:      #A09D98;   /* disabled / very muted */
+
+  /* ── Green: fresh emerald — NOT dark forest ── */
+  --green:        #1A8060;   /* primary: vibrant medium emerald */
+  --green-light:  #239870;   /* hover / active states */
+  --green-bright: #2EB585;   /* light accents, highlights */
+
+  /* ── Gold: rich warm amber ── */
+  --gold:         #B07A25;   /* primary: saturated warm gold */
+  --gold-light:   #CC9540;   /* hover */
+  --gold-dark:    #8A5E15;   /* borders / pressed */
+
+  /* ── Red: kept consistent ── */
+  --red:          #D42035;
+  --red-dark:     #B01828;
+}
+
+/* ── Body ── */
+[data-theme="light"] body { background-color: var(--black); color: var(--white); }
+
+/* ── Scrollbar ── */
+[data-theme="light"] ::-webkit-scrollbar-track { background: #E6E3DD; }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: #B5B2AB; border-radius: 3px; }
+
+/* ── Card elevation: pop against warm ivory page bg ── */
+[data-theme="light"] .db-item-card,
+[data-theme="light"] .db-panel,
+[data-theme="light"] .ord-card,
+[data-theme="light"] .address-card,
+[data-theme="light"] .profile-panel,
+[data-theme="light"] .profile-sidebar,
+[data-theme="light"] .cm-card,
+[data-theme="light"] .wh-product-card,
+[data-theme="light"] .cl-card,
+[data-theme="light"] .ap-body,
+[data-theme="light"] .sm-panel,
+[data-theme="light"] .wh-hero-card,
+[data-theme="light"] .wh-trust-strip,
+[data-theme="light"] .sm-promo-item,
+[data-theme="light"] .address-form,
+[data-theme="light"] .sm-promo-form {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 14px rgba(0,0,0,0.05);
+}
+
+/* ── Navbar: white bg + shadow to separate from ivory page ── */
+[data-theme="light"] .navbar,
+[data-theme="light"] .lnav {
+  background: #FFFFFF;
+  box-shadow: 0 1px 0 var(--border), 0 2px 12px rgba(0,0,0,0.06);
+  border-bottom-color: var(--border);
+}
+[data-theme="light"] .lnav-dropdown {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.07);
+}
+
+/* ── Inputs: slightly tinted so they're recessed inside white cards ── */
+[data-theme="light"] .profile-input,
+[data-theme="light"] .login-input,
+[data-theme="light"] .cm-input,
+[data-theme="light"] .sm-input,
+[data-theme="light"] .um-field input,
+[data-theme="light"] .um-field select,
+[data-theme="light"] .um-search,
+[data-theme="light"] .um-select,
+[data-theme="light"] .om-select,
+[data-theme="light"] .db-size-btn,
+[data-theme="light"] .cm-filter-select {
+  background: #F5F3EF;
+  border-color: var(--border-2);
+}
+
+/* ── Row / item hover states (fix invisible rgba-white) ── */
+[data-theme="light"] .um-row:hover                           { background: rgba(0,0,0,0.03); }
+[data-theme="light"] .lnav-dd-item:hover,
+[data-theme="light"] .profile-nav-item:hover                 { background: rgba(0,0,0,0.05); }
+[data-theme="light"] .profile-nav-item.active                {
+  background: rgba(26,128,96,0.1);
+  border-left-color: var(--green);
+}
+
+/* ── Role badges ── */
+[data-theme="light"] .um-badge-user {
+  background: rgba(0,0,0,0.06); color: var(--muted); border-color: var(--border-2);
+}
+[data-theme="light"] .um-badge-admin {
+  background: rgba(26,128,96,0.12); color: #0F6648; border-color: rgba(26,128,96,0.25);
+}
+
+/* ── Success states (neon green → rich emerald) ── */
+[data-theme="light"] .profile-msg-success,
+[data-theme="light"] .login-success,
+[data-theme="light"] .db-order-success {
+  color: #0C6040;
+  background: rgba(26,128,96,0.1);
+  border-color: rgba(26,128,96,0.22);
+}
+[data-theme="light"] .sm-saved { color: #0C6040; }
+
+/* ── Green accent text & badges ── */
+[data-theme="light"] .address-badge           { color: #0C6040; background: rgba(26,128,96,0.12); }
+[data-theme="light"] .sm-promo-status.on      { color: #0C6040; background: rgba(26,128,96,0.1); }
+[data-theme="light"] .profile-stat-admin      { color: #0C6040; }
+[data-theme="light"] .profile-stat-member     { color: var(--gold); }
+
+/* ── Buttons: filter pills & icon buttons ── */
+[data-theme="light"] .db-cat-btn,
+[data-theme="light"] .cl-filter-btn,
+[data-theme="light"] .wh-cat-chip,
+[data-theme="light"] .wh-link-btn,
+[data-theme="light"] .lnav-theme-btn,
+[data-theme="light"] .navbar-theme-btn          { background: #FFFFFF; }
+
+/* ── Grid lines in hero sections (were invisible white) ── */
+[data-theme="light"] .wh-hero-bg::after,
+[data-theme="light"] .cl-hero-bg::after,
+[data-theme="light"] .login-left-bg::after {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.045) 1px, transparent 1px);
+}
+[data-theme="light"] .wh-promo-banner::before {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.055) 1px, transparent 1px);
+}
+
+/* ── StoreManagement active theme btn ── */
+[data-theme="light"] .sm-theme-btn.active { background: rgba(0,0,0,0.06); }
+
+/* ── Footer ── */
+[data-theme="light"] .footer        { background: #ECEAE5; }
+[data-theme="light"] .footer-bottom { border-top-color: var(--border); }
+
+/* ── Login page ── */
+[data-theme="light"] .login-left        { background: #EDEAE5; border-right-color: var(--border); }
+[data-theme="light"] .login-left-bg {
+  background:
+    radial-gradient(ellipse 70% 70% at 50% 100%, rgba(26,128,96,0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 80% 20%, rgba(176,122,37,0.1) 0%, transparent 60%);
+}
+[data-theme="light"] .login-right       { background: #F8F6F2; }
+
+/* ── Profile sidebar banner gradient ── */
+[data-theme="light"] .profile-sidebar-banner {
+  background: linear-gradient(160deg, rgba(26,128,96,0.12) 0%, rgba(26,128,96,0.04) 60%, transparent 100%), #FFFFFF;
+}
+
+/* ── Hero floating tags ── */
+[data-theme="light"] .wh-floating-tag {
+  background: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* ── Qty buttons ── */
+[data-theme="light"] .db-qty-btn { background: #F0EEE9; border-color: var(--border-2); }
+
+/* ── Icon containers (profile info, empty state, trust strip) ── */
+[data-theme="light"] .profile-empty-icon,
+[data-theme="light"] .profile-info-icon,
+[data-theme="light"] .wh-trust-icon {
+  background: rgba(26,128,96,0.1);
+  border-color: rgba(26,128,96,0.2);
+  color: var(--green);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+button { cursor: pointer; font-family: inherit; }
+a { text-decoration: none; }
+img { display: block; }
+
+/* Production mobile guardrails */
+html,
+body,
+#root,
+.App {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  html { scroll-behavior: auto; }
+
+  body {
+    min-width: 0;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px !important; /* prevents iOS Safari field zoom */
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dark); }
+
+/* Utility */
+.bangla { font-family: var(--font-bangla); }
+
+/* ── Mobile bottom nav spacer ── */
+.mob-nav-spacer { display: none; }
+
+@media (max-width: 640px) {
+  /* Push footer/content above the fixed bottom nav */
+  .mob-nav-spacer {
+    display: block;
+    height: calc(60px + env(safe-area-inset-bottom, 0px));
+    flex-shrink: 0;
+  }
+}
+
+/* ── Shared loader animation ── */
+@keyframes l5 {
+  0%    { -webkit-mask-size: 0    0  , 0    0  , 0    0  , 0    0  , auto }
+  12.5% { -webkit-mask-size: var(--s), 0    0  , 0    0  , 0    0  , auto }
+  25%   { -webkit-mask-size: var(--s), var(--s), 0    0  , 0    0  , auto }
+  37.5% { -webkit-mask-size: var(--s), var(--s), var(--s), 0    0  , auto }
+  50%   { -webkit-mask-size: var(--s), var(--s), var(--s), var(--s), auto }
+  62.5% { -webkit-mask-size: 0    0  , var(--s), var(--s), var(--s), auto }
+  75%   { -webkit-mask-size: 0    0  , 0    0  , var(--s), var(--s), auto }
+  87.5% { -webkit-mask-size: 0    0  , 0    0  , 0    0  , var(--s), auto }
+  100%  { -webkit-mask-size: 0    0  , 0    0  , 0    0  , 0    0  , auto }
+}

@@ -1,0 +1,119 @@
+/* Page shell */
+.ap-page {
+  min-height: calc(100vh - 104px);
+  background: var(--black);
+  padding: 48px 24px 80px;
+}
+
+.ap-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+.ap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+.ap-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ap-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.ap-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--white);
+  margin: 0;
+  line-height: 1;
+}
+
+.ap-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 4px 0 0;
+}
+
+/* World Cup live pill */
+.ap-live-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-2);
+  border-radius: 100px;
+  padding: 7px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+}
+
+.ap-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+}
+
+/* Underline tabs */
+.ap-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+}
+
+.ap-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  margin-bottom: -1px;
+}
+
+.ap-tab:hover {
+  color: var(--white-2);
+}
+
+.ap-tab.active {
+  color: var(--white);
+  border-bottom-color: var(--white);
+}
+
+.ap-tab-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* Panel body */
+.ap-body {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 32px;
+}

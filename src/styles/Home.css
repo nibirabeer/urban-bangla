@@ -1,0 +1,5 @@
+/*
+  Home.jsx renders either <WelcomeHero /> or <ClothingList />
+  depending on auth state — no custom classes needed here.
+  Styles for those components live in WelcomeHero.css and ClothingList.css.
+*/

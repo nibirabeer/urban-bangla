@@ -1,0 +1,89 @@
+/* Bottom tab bar — hidden on desktop, shown on phones only */
+.mob-nav { display: none; }
+
+@media (max-width: 640px) {
+  .mob-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    /* respect iPhone home indicator */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: var(--off-black);
+    border-top: 1px solid var(--border);
+    z-index: 200;
+    box-shadow: 0 -8px 24px rgba(0,0,0,0.28);
+  }
+
+  /* Guest: 3 equal tabs */
+  .mob-nav-guest .mob-tab { flex: 1; }
+
+  /* Individual tab */
+  .mob-tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 10px 4px 11px;
+    min-height: 60px;
+    color: var(--muted);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.18s;
+    -webkit-tap-highlight-color: transparent; /* remove iOS tap flash */
+  }
+
+  .mob-tab span {
+    font-size: 10px;
+    font-weight: 700;
+    font-family: var(--font-bangla);
+    letter-spacing: 0.2px;
+    line-height: 1;
+  }
+
+  /* Active indicator: thin bar at top + green colour */
+  .mob-tab.active {
+    color: var(--green-bright);
+  }
+  .mob-tab.active::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 20%; right: 20%;
+    height: 2px;
+    background: var(--green);
+    border-radius: 0 0 3px 3px;
+  }
+
+  /* Press feedback */
+  .mob-tab:active { opacity: 0.72; }
+
+  /* Sign In tab: gold tint to stand out for guests */
+  .mob-tab-signin { color: var(--gold); }
+  .mob-tab-signin.active { color: var(--green-bright); }
+
+  /* Cart icon with badge */
+  .mob-cart-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px; height: 26px;
+  }
+
+  .mob-cart-badge {
+    position: absolute;
+    top: -6px; right: -9px;
+    min-width: 17px; height: 17px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 17px;
+    text-align: center;
+    border: 2px solid var(--off-black);
+    font-family: var(--font-bangla);
+  }
+}
