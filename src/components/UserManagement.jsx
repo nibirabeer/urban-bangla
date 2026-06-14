@@ -4,7 +4,16 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { initializeApp, deleteApp } from "firebase/app";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Camera } from "lucide-react";
-import { db, firebaseConfig } from "../services/firebase";
+import { db } from "../services/firebase";
+
+const firebaseConfig = {
+  apiKey:            import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain:        import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId:         import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket:     import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId:             import.meta.env.VITE_FIREBASE_APP_ID,
+};
 import "../styles/UserManagement.css";
 
 const emptyUser = { name: "", email: "", password: "", phone: "", role: "user" };
