@@ -338,8 +338,31 @@
   line-height: 1.5;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .sm-theme-cards { grid-template-columns: 1fr; }
+
+  .sm-field-row { grid-template-columns: 1fr; }
+
+  .sm-panel-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .sm-actions { flex-wrap: wrap; }
+
+  .sm-promo-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .sm-promo-item-actions { align-self: stretch; justify-content: flex-end; }
+
+  .sm-popup-preview { max-width: 100%; }
+
+  .sm-nav-btn { padding: 8px 12px; font-size: 12px; }
+
+  .sm-promo-preview { padding: 20px 18px; }
 }
 
 /* Promo form */

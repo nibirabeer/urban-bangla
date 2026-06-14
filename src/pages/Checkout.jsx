@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, useRef, forwardRef, useImperativeHandle } from "react";
 import { useNavigate } from "react-router-dom";
-import { doc, getDoc, addDoc, collection, runTransaction } from "firebase/firestore";
+import { doc, getDoc, addDoc, collection } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { MapPin, CheckCircle, ArrowLeft, CreditCard } from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";
@@ -83,35 +83,17 @@ const CheckoutForm = ({ user, addresses, paymentConfig, items, total, clearCart 
     (paymentConfig.stripe?.active && paymentConfig.stripe?.publishableKey) && { key: "card", ...PAYMENT_ICONS.card },
   ].filter(Boolean);
 
-  /* Atomically deduct stock for each ordered item. Non-fatal — if
-     this fails the order is still recorded; admin can adjust manually. */
-  const deductStock = async (orderItems) => {
-    for (const item of orderItems) {
-      if (!item.itemId) continue;
-      // Custom sizes are made-to-order with no stock tracking — skip
-      if (typeof item.size === "string" && item.size.startsWith("Custom")) continue;
-      try {
-        await runTransaction(db, async (tx) => {
-          const ref  = doc(db, "clothing", item.itemId);
-          const snap = await tx.get(ref);
-          if (!snap.exists()) return;
-          const stock = snap.data().stock;
-          if (!stock || !(item.size in stock)) return;
-          const current = stock[item.size] ?? 0;
-          if (current === -1) return; // sentinel: unlimited/MTO
-          tx.update(ref, { [`stock.${item.size}`]: Math.max(0, current - item.quantity) });
-        });
-      } catch (e) {
-        console.error("Stock deduction failed for", item.name, item.size, e);
-      }
-    }
-  };
+  // Stock deduction is handled server-side in the onOrderCreated Cloud Function.
 
   const placeOrder = async () => {
     if (!selectedAddr)  { setError("Please select a delivery address."); return; }
     if (!paymentMethod) { setError("Please select a payment method."); return; }
-    if ((paymentMethod === "bkash" || paymentMethod === "nagad") && !transactionId.trim()) {
-      setError("Please enter your transaction ID."); return;
+    if (paymentMethod === "bkash" || paymentMethod === "nagad") {
+      const txn = transactionId.trim();
+      if (!txn) { setError("Please enter your transaction ID."); return; }
+      if (!/^[A-Za-z0-9]{8,20}$/.test(txn)) {
+        setError("Transaction ID must be 8–20 alphanumeric characters."); return;
+      }
     }
     setError(""); setPlacing(true);
 
@@ -134,10 +116,11 @@ const CheckoutForm = ({ user, addresses, paymentConfig, items, total, clearCart 
       };
 
       if (paymentMethod === "card") {
-        // Step 1 – create PaymentIntent via Cloud Function
+        // Step 1 – create PaymentIntent via Cloud Function (price calculated server-side)
         const fns = getFunctions(app);
         const createPaymentIntent = httpsCallable(fns, "createPaymentIntent");
-        const { data: { clientSecret } } = await createPaymentIntent({ amount: total });
+        const cartItems = items.map(i => ({ itemId: i.itemId, size: i.size, quantity: i.quantity }));
+        const { data: { clientSecret } } = await createPaymentIntent({ items: cartItems });
 
         // Step 2 – confirm card payment (Stripe handles 3DS, etc.)
         const result = await cardRef.current.confirmPayment(clientSecret);
@@ -155,7 +138,6 @@ const CheckoutForm = ({ user, addresses, paymentConfig, items, total, clearCart 
           paymentIntentId: result.paymentIntent.id,
           paymentStatus: "paid",
         });
-        await deductStock(items);
       } else {
         setSuccess(true);
         await addDoc(collection(db, "users", user.uid, "orders"), {
@@ -163,7 +145,6 @@ const CheckoutForm = ({ user, addresses, paymentConfig, items, total, clearCart 
           transactionId: transactionId.trim() || "",
           paymentStatus: paymentMethod === "cod" ? "verified" : "pending",
         });
-        await deductStock(items);
       }
 
       await clearCart();

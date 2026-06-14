@@ -598,4 +598,14 @@
   .um-modal-footer { flex-direction: column; }
   .um-modal-footer > div { width: 100%; }
   .um-btn-primary, .um-btn-sec, .um-btn-toggle { width: 100%; text-align: center; }
+
+  .um-topbar { flex-direction: column; align-items: stretch; }
+  .um-search-wrap { max-width: 100%; }
+  .um-controls { flex-wrap: wrap; }
+  .um-add-btn { width: 100%; justify-content: center; }
+
+  .um-stat { padding: 12px 14px; }
+  .um-stat-val { font-size: 22px; }
+
+  .um-overlay { padding: 10px; }
 }

@@ -352,6 +352,8 @@
   overflow: hidden;
   border-radius: 12px;
   background: var(--off-black);
+  touch-action: pan-y;
+  user-select: none;
 }
 .db-carousel-img {
   width: 100%; height: 100%;

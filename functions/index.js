@@ -1,6 +1,7 @@
-const { onCall, HttpsError }   = require("firebase-functions/v2/https");
-const { onDocumentCreated }    = require("firebase-functions/v2/firestore");
-const { defineSecret }         = require("firebase-functions/params");
+const { onCall, HttpsError }              = require("firebase-functions/v2/https");
+const { onDocumentCreated,
+        onDocumentUpdated }               = require("firebase-functions/v2/firestore");
+const { defineSecret }                    = require("firebase-functions/params");
 const { initializeApp }        = require("firebase-admin/app");
 const { getFirestore }         = require("firebase-admin/firestore");
 const Stripe                   = require("stripe");
@@ -16,7 +17,7 @@ const resendApiKey    = defineSecret("RESEND_API_KEY");
 // Set this to your verified Resend sender domain.
 // During testing you can use: onboarding@resend.dev
 // Production: verify your domain at resend.com, then use e.g. orders@urbanbangla.com
-const FROM_EMAIL = "Urban বাংলা <onboarding@resend.dev>";
+const FROM_EMAIL = "Urban বাংলা <orders@urbanbangla.store>";
 
 const COURIER_URLS = {
   Steadfast:     "https://steadfast.com.bd/track/",
@@ -194,8 +195,106 @@ const buildDeliveryUpdateEmail = (order, userName) => {
     </p>`);
 };
 
+const buildCancelledEmail = (order, userName) => {
+  const items = order.items?.length
+    ? order.items
+    : [{ name: order.itemName, size: order.size, quantity: order.quantity, price: order.totalPrice }];
+
+  const itemsHtml = items.map(i => `
+    <tr>
+      <td style="padding:10px 0;border-bottom:1px solid #1e1e1e;font-size:14px;color:#F5F2EC;">${i.name || "Product"}</td>
+      <td style="padding:10px 0;border-bottom:1px solid #1e1e1e;font-size:13px;color:#888;text-align:right;">
+        Size: ${i.size || "—"} × Qty: ${i.quantity || 1}
+      </td>
+    </tr>`).join("");
+
+  return emailWrap(`
+    <div style="text-align:center;margin-bottom:28px;">
+      <div style="font-size:44px;margin-bottom:12px;">❌</div>
+      <h2 style="margin:0 0 8px;font-size:22px;font-weight:700;color:#F5F2EC;">Order Cancelled</h2>
+      <p style="margin:0;font-size:15px;color:#666;">Hi ${userName}, your order has been cancelled.</p>
+    </div>
+
+    <div style="background:#141414;border:1px solid #2a1a1a;border-radius:10px;padding:20px;margin-bottom:20px;">
+      <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#555;margin:0 0 12px;">Cancelled Items</p>
+      <table width="100%" cellpadding="0" cellspacing="0">${itemsHtml}</table>
+      <p style="margin:14px 0 0;font-size:16px;font-weight:800;color:#F5F2EC;text-align:right;">Total: ৳${Math.round(order.totalPrice || 0)}</p>
+    </div>
+
+    <div style="background:rgba(244,42,65,0.07);border:1px solid rgba(244,42,65,0.2);border-radius:10px;padding:16px 20px;margin-bottom:24px;">
+      <p style="margin:0;font-size:14px;color:#aaa;line-height:1.6;">
+        If you paid online, your refund will be processed within <strong style="color:#F5F2EC;">3–5 business days</strong>.
+        If you have any questions, please reply to this email.
+      </p>
+    </div>
+
+    <p style="text-align:center;font-size:14px;color:#555;margin:0;">
+      We're sorry for the inconvenience. Shop again at <strong style="color:#F5F2EC;">Urban বাংলা</strong> anytime.
+    </p>`);
+};
+
+const buildStatusUpdateEmail = (order, userName) => {
+  const status = order.status;
+
+  const statusConfig = {
+    Packed:             { icon: "📦", title: "Your Order is Being Packed",        msg: "Great news! We're packing your items and getting them ready for shipment." },
+    Shipped:            { icon: "🚚", title: "Your Order Has Been Shipped",        msg: "Your order is on its way! You'll receive tracking info shortly." },
+    "Out for Delivery": { icon: "🏃", title: "Out for Delivery!",                 msg: "Your order is out for delivery today. Keep an eye out for the courier!" },
+    Delivered:          { icon: "✅", title: "Order Delivered!",                  msg: "Your order has been delivered. We hope you love it!" },
+  };
+
+  const cfg = statusConfig[status] || { icon: "📋", title: `Order Update: ${status}`, msg: "Your order status has been updated." };
+
+  const tracking = order.tracking;
+  const trackUrl = tracking?.courier && tracking?.code && COURIER_URLS[tracking.courier]
+    ? `${COURIER_URLS[tracking.courier]}${tracking.code}`
+    : null;
+
+  return emailWrap(`
+    <div style="text-align:center;margin-bottom:28px;">
+      <div style="font-size:44px;margin-bottom:12px;">${cfg.icon}</div>
+      <h2 style="margin:0 0 8px;font-size:22px;font-weight:700;color:#F5F2EC;">${cfg.title}</h2>
+      <p style="margin:0;font-size:15px;color:#666;">Hi ${userName}, ${cfg.msg}</p>
+    </div>
+
+    <div style="text-align:center;margin-bottom:24px;">
+      <span style="display:inline-block;background:#006A4E;color:#fff;font-size:13px;font-weight:700;
+        letter-spacing:1px;text-transform:uppercase;padding:8px 20px;border-radius:100px;">
+        ${status}
+      </span>
+    </div>
+
+    ${tracking?.code ? `
+    <div style="background:#141414;border:1px solid #1e1e1e;border-radius:10px;padding:20px;margin-bottom:20px;">
+      <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#555;margin:0 0 14px;">Tracking</p>
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="font-size:13px;color:#888;padding-bottom:10px;">Courier</td>
+          <td style="text-align:right;font-size:14px;font-weight:700;color:#F5F2EC;padding-bottom:10px;">${tracking.courier}</td>
+        </tr>
+        <tr>
+          <td style="font-size:13px;color:#888;">Tracking Number</td>
+          <td style="text-align:right;font-size:16px;font-weight:800;color:#C9A96E;letter-spacing:1px;">${tracking.code}</td>
+        </tr>
+      </table>
+    </div>
+    ${trackUrl ? `<div style="text-align:center;margin-bottom:24px;">
+      <a href="${trackUrl}" target="_blank"
+        style="display:inline-block;background:#006A4E;color:#fff;font-size:15px;font-weight:700;
+          text-decoration:none;padding:14px 36px;border-radius:10px;">
+        Track My Package →
+      </a>
+    </div>` : ""}` : ""}
+
+    <p style="text-align:center;font-size:13px;color:#555;margin:0;">
+      Questions? Just reply to this email — we're here to help.
+    </p>`);
+};
+
 /* ════════════════════════════════════════════════════
    1. Stripe — create payment intent
+      Price is calculated SERVER-SIDE from Firestore to
+      prevent client-side price manipulation.
 ════════════════════════════════════════════════════ */
 exports.createPaymentIntent = onCall(
   { secrets: [stripeSecretKey] },
@@ -203,17 +302,37 @@ exports.createPaymentIntent = onCall(
     if (!request.auth) {
       throw new HttpsError("unauthenticated", "You must be signed in to make a payment.");
     }
-    const { amount } = request.data;
-    if (!amount || typeof amount !== "number" || amount <= 0) {
-      throw new HttpsError("invalid-argument", "A valid positive amount is required.");
+
+    const { items } = request.data; // [{ itemId, size, quantity }]
+    if (!Array.isArray(items) || items.length === 0) {
+      throw new HttpsError("invalid-argument", "Cart items are required.");
     }
+
+    // Calculate total from Firestore prices — never trust the client's price
+    const db = getFirestore();
+    let calculatedTotal = 0;
+    for (const item of items) {
+      if (!item.itemId || !item.quantity || item.quantity < 1) {
+        throw new HttpsError("invalid-argument", "Each item must have itemId and quantity.");
+      }
+      const snap = await db.doc(`clothing/${item.itemId}`).get();
+      if (!snap.exists) throw new HttpsError("not-found", `Item ${item.itemId} not found.`);
+      const data = snap.data();
+      if (!data.display) throw new HttpsError("failed-precondition", `Item ${item.itemId} is not available.`);
+      calculatedTotal += (data.price || 0) * item.quantity;
+    }
+
+    if (calculatedTotal < 1) {
+      throw new HttpsError("invalid-argument", "Order total is too low.");
+    }
+
     const stripe = new Stripe(stripeSecretKey.value(), { apiVersion: "2023-10-16" });
     const paymentIntent = await stripe.paymentIntents.create({
-      amount:   Math.round(amount * 100),
+      amount:   Math.round(calculatedTotal * 100),
       currency: "bdt",
       metadata: { userId: request.auth.uid },
     });
-    return { clientSecret: paymentIntent.client_secret };
+    return { clientSecret: paymentIntent.client_secret, amount: calculatedTotal };
   }
 );
 
@@ -230,12 +349,38 @@ exports.onOrderCreated = onDocumentCreated(
     if (!order) return;
 
     const db = getFirestore();
+
+    // ── Deduct stock server-side (Firestore rules block client writes to clothing) ──
+    const orderItems = order.items?.length
+      ? order.items
+      : (order.itemId ? [{ itemId: order.itemId, size: order.size, quantity: order.quantity || 1 }] : []);
+
+    for (const item of orderItems) {
+      if (!item.itemId) continue;
+      if (typeof item.size === "string" && item.size.startsWith("Custom")) continue;
+      try {
+        await db.runTransaction(async (tx) => {
+          const ref  = db.doc(`clothing/${item.itemId}`);
+          const snap = await tx.get(ref);
+          if (!snap.exists) return;
+          const stock = snap.data().stock;
+          if (!stock || !(item.size in stock)) return;
+          const current = stock[item.size] ?? 0;
+          if (current === -1) return; // unlimited/MTO
+          tx.update(ref, { [`stock.${item.size}`]: Math.max(0, current - (item.quantity || 1)) });
+        });
+      } catch (e) {
+        console.error("Stock deduction failed for", item.itemId, item.size, e);
+      }
+    }
+
+    // ── Send order confirmation email ──
     const userSnap = await db.doc(`users/${userId}`).get();
     const user     = userSnap.data();
     const email    = user?.email;
     const name     = user?.name || "Customer";
 
-    if (!email) return; // no email to send to
+    if (!email) return;
 
     try {
       const resend = new Resend(resendApiKey.value());
@@ -308,5 +453,60 @@ exports.sendDeliveryUpdate = onCall(
 
     console.log(`Delivery update sent to ${email} for order ${orderId}`);
     return { success: true };
+  }
+);
+
+/* ════════════════════════════════════════════════════
+   4. Order status change emails — Firestore trigger
+      Fires when an order doc is updated.
+      Sends the right email based on the new status.
+════════════════════════════════════════════════════ */
+exports.onOrderStatusChanged = onDocumentUpdated(
+  { document: "users/{userId}/orders/{orderId}", secrets: [resendApiKey] },
+  async (event) => {
+    const before = event.data.before.data();
+    const after  = event.data.after.data();
+    const userId = event.params.userId;
+
+    if (!before || !after) return;
+
+    const prevStatus = before.status;
+    const newStatus  = after.status;
+
+    // Only act when status actually changed
+    if (prevStatus === newStatus) return;
+
+    const EMAIL_STATUSES = ["Packed", "Shipped", "Out for Delivery", "Delivered", "Cancelled"];
+    if (!EMAIL_STATUSES.includes(newStatus)) return;
+
+    const db       = getFirestore();
+    const userSnap = await db.doc(`users/${userId}`).get();
+    const user     = userSnap.data();
+    const email    = user?.email;
+    const name     = user?.name || "Customer";
+
+    if (!email) return;
+
+    let subject, html;
+
+    if (newStatus === "Cancelled") {
+      subject = `❌ Order Cancelled — Urban বাংলা`;
+      html    = buildCancelledEmail(after, name);
+    } else {
+      subject = `${
+        newStatus === "Delivered" ? "✅" :
+        newStatus === "Out for Delivery" ? "🏃" :
+        newStatus === "Shipped" ? "🚚" : "📦"
+      } ${newStatus} — Urban বাংলা`;
+      html = buildStatusUpdateEmail(after, name);
+    }
+
+    try {
+      const resend = new Resend(resendApiKey.value());
+      await resend.emails.send({ from: FROM_EMAIL, to: email, subject, html });
+      console.log(`Status email (${newStatus}) sent to ${email} for order ${event.params.orderId}`);
+    } catch (err) {
+      console.error("Failed to send status update email:", err);
+    }
   }
 );

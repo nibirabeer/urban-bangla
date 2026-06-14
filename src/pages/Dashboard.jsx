@@ -50,6 +50,7 @@ const Dashboard = () => {
   const [customUnit,  setCustomUnit]  = useState("ft");
   const [customErr,   setCustomErr]   = useState(false);
   const [sheetOpen,   setSheetOpen]   = useState(false);
+  const touchStartX = useRef(null);
   const sheetRef = useRef(null);
   const { addItem, openCart, loading: cartLoading } = useCart();
   const navigate = useNavigate();
@@ -239,7 +240,17 @@ const Dashboard = () => {
               <div className="db-sheet-scroll">
                 {/* Carousel */}
                 <div className="db-carousel">
-                  <div className="db-carousel-main">
+                  <div
+                    className="db-carousel-main"
+                    onTouchStart={e => { touchStartX.current = e.touches[0].clientX; }}
+                    onTouchEnd={e => {
+                      if (touchStartX.current === null) return;
+                      const delta = touchStartX.current - e.changedTouches[0].clientX;
+                      if (delta > 40 && imgIdx < photos.length - 1) setImgIdx(i => i + 1);
+                      if (delta < -40 && imgIdx > 0) setImgIdx(i => i - 1);
+                      touchStartX.current = null;
+                    }}
+                  >
                     <img key={imgIdx} src={photos[imgIdx]} alt={selected.name} className="db-carousel-img" />
                     {photos.length > 1 && (
                       <>

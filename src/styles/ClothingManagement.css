@@ -1055,3 +1055,19 @@
   .inv-status-tabs { flex-wrap: wrap; }
   .cm-view-toggle { display: none; }
 }
+
+@media (max-width: 480px) {
+  .cm-overlay { padding: 10px; }
+
+  .cm-topbar { flex-direction: column; align-items: stretch; }
+  .cm-topbar-right { flex-wrap: wrap; }
+  .cm-add-btn { flex: 1; text-align: center; justify-content: center; }
+
+  .inv-kpis { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .inv-kpi  { padding: 12px; gap: 8px; }
+  .inv-kpi-icon { width: 36px; height: 36px; border-radius: 8px; }
+  .inv-kpi-val  { font-size: 22px; }
+
+  .inv-toolbar { flex-direction: column; align-items: stretch; }
+  .inv-search-wrap { min-width: 0; }
+}

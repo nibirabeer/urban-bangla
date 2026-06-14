@@ -117,3 +117,36 @@
   border-radius: 16px;
   padding: 28px 32px;
 }
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .ap-page { padding: 20px 14px 60px; }
+
+  .ap-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .ap-title { font-size: 22px; letter-spacing: 2px; }
+
+  .ap-live-pill { align-self: flex-start; }
+
+  .ap-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-bottom: 20px;
+  }
+  .ap-tabs::-webkit-scrollbar { display: none; }
+
+  .ap-tab {
+    padding: 10px 14px;
+    font-size: 13px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .ap-body { padding: 16px 14px; border-radius: 12px; }
+}

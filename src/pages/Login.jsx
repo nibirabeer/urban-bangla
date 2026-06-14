@@ -68,7 +68,7 @@ const Login = ({ setIsLoggedIn }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.email || !formData.password) { setError("Email and password are required."); return; }
-    if (formData.password.length < 6) { setError("Password must be at least 6 characters."); return; }
+    if (formData.password.length < 8) { setError("Password must be at least 8 characters."); return; }
     setLoading(true);
     try {
       if (isLoginMode) {
