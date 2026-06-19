@@ -81,7 +81,7 @@
   font-size: 10px; font-weight: 800; letter-spacing: 1.5px;
   text-transform: uppercase; padding: 3px 10px; border-radius: 100px; flex-shrink: 0;
 }
-.db-promo-green { background: rgba(0,106,78,0.1);    border-color: rgba(0,106,78,0.25);    color: #4dffa6; }
+.db-promo-green { background: rgba(196,168,130,0.1);    border-color: rgba(196,168,130,0.25);    color: var(--gold); }
 .db-promo-green  .db-promo-badge { background: var(--green); color: #fff; }
 .db-promo-red   { background: rgba(244,42,65,0.08);  border-color: rgba(244,42,65,0.22);   color: var(--red); }
 .db-promo-red    .db-promo-badge { background: var(--red);   color: #fff; }
@@ -483,14 +483,14 @@
 .db-size-btn:not(:disabled):hover {
   border-color: var(--green);
   color: var(--white);
-  background: rgba(0,106,78,0.06);
+  background: rgba(196,168,130,0.06);
 }
 
 .db-size-btn.active {
   background: var(--green);
   border-color: var(--green);
   color: #fff;
-  box-shadow: 0 4px 14px rgba(0,106,78,0.3);
+  box-shadow: 0 4px 14px rgba(196,168,130,0.3);
 }
 .db-size-btn.active .db-size-sub { opacity: 0.85; }
 
@@ -618,7 +618,7 @@
 /* Action buttons */
 .db-added-msg {
   display: flex; align-items: center; gap: 8px;
-  background: rgba(0,106,78,0.12); border: 1px solid rgba(0,106,78,0.28);
+  background: rgba(196,168,130,0.12); border: 1px solid rgba(196,168,130,0.28);
   color: var(--green-bright); padding: 9px 14px;
   border-radius: 8px; font-size: 13px; margin-bottom: 10px;
 }
