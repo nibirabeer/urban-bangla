@@ -49,7 +49,7 @@
 .lnav-brand-bn {
   font-size: 12px;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--muted);
   font-family: var(--font-bangla);
 }
 
@@ -76,8 +76,8 @@
 }
 
 .admin-link.active {
-  color: var(--gold);
-  background: rgba(201, 169, 110, 0.1);
+  color: var(--white);
+  background: rgba(255,255,255,0.07);
 }
 
 /* Avatar dropdown trigger */
@@ -243,8 +243,8 @@
   height: 18px;
   padding: 0 5px;
   border-radius: 999px;
-  background: var(--green);
-  color: #fff;
+  background: var(--white);
+  color: #060606;
   font-size: 10px;
   font-weight: 700;
   margin-left: 4px;
@@ -272,7 +272,7 @@
   transition: background-color 0.15s, border-color 0.15s, color 0.15s;
 }
 .lnav-theme-btn:hover { border-color: var(--border-2); color: var(--white); background: var(--border); }
-.lnav-theme-btn.active { background: var(--green); border-color: var(--green); color: var(--white); }
+.lnav-theme-btn.active { background: var(--white); border-color: var(--white); color: #060606; }
 
 /* Sign out */
 .lnav-dd-logout {
@@ -352,8 +352,8 @@
   height: 19px;
   padding: 0 5px;
   border-radius: 999px;
-  background: var(--gold);
-  color: var(--black);
+  background: var(--white);
+  color: #060606;
   font-size: 10px;
   font-weight: 800;
   line-height: 19px;

@@ -33,10 +33,7 @@
 .cl-hero-bg {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 60% 60% at 80% 50%, rgba(0,106,78,0.18) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(244,42,65,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 50% 0%, rgba(201,169,110,0.06) 0%, transparent 60%);
+  background: transparent;
 }
 
 /* Subtle grid overlay */
@@ -63,9 +60,9 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(0,106,78,0.15);
-  border: 1px solid var(--green);
-  color: var(--white-2);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border-2);
+  color: var(--muted);
   font-family: var(--font-bangla);
   font-size: 14px;
   font-weight: 600;
@@ -98,7 +95,7 @@
 .cl-hero-line-2 {
   font-size: clamp(36px, 6vw, 64px);
   font-weight: 700;
-  color: var(--gold);
+  color: var(--muted);
   line-height: 1;
   margin-top: -8px;
 }
@@ -123,18 +120,18 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--green);
-  color: var(--white);
+  background: var(--white);
+  color: #060606;
   border: none;
   padding: 14px 32px;
   border-radius: 10px;
   font-family: var(--font-bangla);
   font-size: 16px;
   font-weight: 700;
-  box-shadow: 0 4px 24px rgba(0,106,78,0.35);
+  box-shadow: none;
   transition: transform 0.2s, background 0.2s;
 }
-.cl-hero-cta:hover { background: var(--green-light); transform: translateY(-2px); }
+.cl-hero-cta:hover { background: #fff; transform: translateY(-2px); }
 
 .cl-hero-cta-sec {
   display: inline-flex;
@@ -149,7 +146,7 @@
   font-weight: 500;
   transition: border-color 0.2s, color 0.2s;
 }
-.cl-hero-cta-sec:hover { border-color: var(--gold-dark); color: var(--gold-light); }
+.cl-hero-cta-sec:hover { border-color: var(--white); color: var(--white); }
 
 /* Trust strip */
 .cl-trust-strip {
@@ -169,10 +166,10 @@
 .cl-trust-item:last-child { border-right: none; }
 .cl-trust-icon {
   width: 38px; height: 38px; border-radius: 10px;
-  background: rgba(0,106,78,0.1);
-  border: 1px solid rgba(0,106,78,0.2);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border-2);
   display: flex; align-items: center; justify-content: center;
-  color: var(--green-bright); flex-shrink: 0;
+  color: var(--white); flex-shrink: 0;
 }
 .cl-trust-label { font-size: 13px; font-weight: 700; color: var(--white); margin: 0 0 2px; }
 .cl-trust-sub   { font-size: 11px; color: var(--muted); margin: 0; }
@@ -207,7 +204,7 @@
   white-space: nowrap;
   flex-shrink: 0;
 }
-.cl-sign-in-cta:hover { border-color: var(--green); color: var(--white); }
+.cl-sign-in-cta:hover { border-color: var(--white); color: var(--white); }
 
 /* BODY */
 .cl-body {
@@ -240,7 +237,7 @@
   white-space: nowrap; flex-shrink: 0;
 }
 .cl-filter-btn:hover { border-color: var(--gold-dark); color: var(--white); }
-.cl-filter-btn.active { background: var(--green); border-color: var(--green); color: var(--white); }
+.cl-filter-btn.active { background: var(--white); border-color: var(--white); color: #060606; }
 
 .cl-empty { text-align: center; padding: 80px 0; color: var(--muted-2); font-size: 16px; }
 
@@ -277,7 +274,7 @@
 .cl-card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,106,78,0.7);
+  background: rgba(0,0,0,0.75);
   display: flex; align-items: center; justify-content: center;
   opacity: 0;
   transition: opacity 0.25s;
@@ -333,12 +330,12 @@
 }
 
 .cl-price-wrap { display: flex; align-items: baseline; gap: 2px; }
-.cl-currency { font-family: var(--font-bangla); font-size: 18px; color: var(--gold); font-weight: 700; }
+.cl-currency { font-family: var(--font-bangla); font-size: 18px; color: var(--muted); font-weight: 700; }
 .cl-price { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--white); letter-spacing: 1px; }
 
 .cl-buy-btn {
-  background: var(--green);
-  color: var(--white);
+  background: var(--white);
+  color: #060606;
   border: none;
   padding: 8px 18px;
   border-radius: 8px;
@@ -347,7 +344,7 @@
   font-weight: 700;
   transition: background 0.2s;
 }
-.cl-buy-btn:hover { background: var(--green-light); }
+.cl-buy-btn:hover { background: #fff; }
 
 /* MOBILE RESPONSIVE */
 

@@ -6,19 +6,23 @@
   --border:      #1e1e1e;
   --border-2:    #2a2a2a;
 
-  /* Brand Palette – logo inspired */
-  --gold:        #C9A96E;   /* warm tan/gold from logo */
-  --gold-light:  #E2C99A;
-  --gold-dark:   #A07840;
+  /* Brand Palette – B&W editorial */
+  --gold:        #888888;   /* gray (secondary text) */
+  --gold-light:  #aaaaaa;
+  --gold-dark:   #666666;
 
-  /* Bangladesh Green */
-  --green:       #006A4E;   /* official Bangladesh flag green */
-  --green-light: #00875F;
-  --green-bright:#00FF8C;   /* electric accent */
+  /* Accent: white replaces green */
+  --green:       #F5F2EC;   /* white (for text accents, active states) */
+  --green-light: #FFFFFF;
+  --green-bright:#FFFFFF;   /* electric accent → white */
 
-  /* Bangladesh Red */
-  --red:         #F42A41;   /* flag red */
-  --red-dark:    #C41E30;
+  /* Error states: light gray (keeps readable) */
+  --red:         #cccccc;
+  --red-dark:    #aaaaaa;
+
+  /* B&W accent */
+  --accent:      #F5F2EC;   /* white — replaces green/gold for buttons */
+  --accent-text: #060606;   /* black text ON white buttons */
 
   --white:       #F5F2EC;
   --white-2:     #E8E4DC;

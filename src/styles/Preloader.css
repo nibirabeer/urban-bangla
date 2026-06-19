@@ -1,0 +1,33 @@
+.pre-wrap {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #060606;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.pre-wrap.pre-out { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.pre-content {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.pre-content.pre-visible { opacity: 1; transform: none; }
+
+.pre-line-1 {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 15vw, 140px);
+  font-weight: 700;
+  letter-spacing: 12px;
+  color: #F5F2EC;
+  line-height: 1;
+  margin: 0;
+}
+.pre-line-2 {
+  font-family: var(--font-bangla);
+  font-size: clamp(28px, 6vw, 56px);
+  font-weight: 700;
+  color: #888;
+  letter-spacing: 4px;
+  margin: 0;
+}

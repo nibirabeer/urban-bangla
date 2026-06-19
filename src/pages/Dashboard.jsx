@@ -98,6 +98,9 @@ const Dashboard = () => {
             >
               <div className="db-item-img-wrap">
                 <img src={item.photoURL} alt={item.name} className="db-item-img" />
+                {item.photoURLs?.[1] && (
+                  <img src={item.photoURLs[1]} alt="" className="db-item-img-alt" />
+                )}
                 {item.tag && <span className="db-item-tag">{item.tag}</span>}
                 {item.pinned && <span className="db-item-pin">Featured</span>}
                 {allOut && <div className="db-item-out-overlay">Out of Stock</div>}

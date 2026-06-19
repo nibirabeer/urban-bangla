@@ -12,6 +12,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
 import MobileBottomNav from "./components/MobileBottomNav";
 import CartDrawer from "./components/CartDrawer";
+import Preloader from "./components/Preloader";
 import Home from "./pages/Home";
 import Orders from "./pages/Orders";
 import Cart from "./pages/Cart";
@@ -25,6 +26,7 @@ import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((user) => setIsLoggedIn(!!user));
@@ -41,6 +43,7 @@ function App() {
     <CartProvider>
     <Router>
       <div className="App">
+        {!loaded && <Preloader onDone={() => setLoaded(true)} />}
         <AnnouncementBar />
 
         {isLoggedIn
