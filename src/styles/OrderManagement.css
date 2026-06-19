@@ -289,7 +289,7 @@
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 12px 14px;
-  background: rgba(0,106,78,0.03);
+  background: rgba(0,0,0,0.025);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -304,7 +304,7 @@
 
 .om-notified-badge {
   display: inline-flex; align-items: center; gap: 4px;
-  background: rgba(0,106,78,0.15); color: #4dffa6;
+  background: rgba(196,168,130,0.15); color: var(--white-2);
   font-size: 9px; font-weight: 700; letter-spacing: 0.5px;
   padding: 2px 8px; border-radius: 100px;
   margin-left: 6px;
@@ -346,11 +346,11 @@
   display: inline-flex; align-items: center; gap: 4px;
   font-size: 11px; font-weight: 700; color: var(--green-bright);
   text-decoration: none;
-  background: rgba(0,106,78,0.15); border: 1px solid rgba(0,106,78,0.25);
+  background: rgba(196,168,130,0.15); border: 1px solid rgba(196,168,130,0.25);
   padding: 3px 10px; border-radius: 6px;
   transition: background 0.15s;
 }
-.om-track-link:hover { background: rgba(0,106,78,0.25); }
+.om-track-link:hover { background: rgba(196,168,130,0.25); }
 
 .om-track-edit-btn {
   background: transparent; border: 1px solid var(--border-2);
@@ -375,7 +375,7 @@
 
 .om-email-sent {
   display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 700; color: #4dffa6;
+  font-size: 12px; font-weight: 700; color: var(--white-2);
 }
 .om-email-error {
   font-size: 12px; color: var(--red); margin: 0;

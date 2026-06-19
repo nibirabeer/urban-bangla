@@ -47,8 +47,8 @@
 
 .um-search:focus {
   outline: none;
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(0,106,78,0.12);
+  border-color: var(--gold-dark);
+  box-shadow: 0 0 0 3px rgba(196,168,130,0.12);
 }
 
 .um-search::placeholder { color: var(--muted-2); }
@@ -78,7 +78,7 @@
 
 .um-select:focus {
   outline: none;
-  border-color: var(--green);
+  border-color: var(--gold-dark);
   color: var(--white);
 }
 
@@ -86,8 +86,8 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  background: var(--green);
-  color: var(--white);
+  background: var(--gold);
+  color: var(--black);
   border: none;
   padding: 10px 20px;
   border-radius: 9px;
@@ -98,10 +98,9 @@
   cursor: pointer;
   transition: background 0.2s, transform 0.1s;
   white-space: nowrap;
-  box-shadow: 0 2px 10px rgba(0,106,78,0.25);
 }
 
-.um-add-btn:hover { background: var(--green-light); }
+.um-add-btn:hover { background: var(--gold-light); }
 .um-add-btn:active { transform: scale(0.98); }
 
 /* Error */
@@ -143,7 +142,7 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: var(--green);
+  background: var(--gold);
   border-radius: 2px 0 0 2px;
 }
 
@@ -213,7 +212,7 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--green), var(--green-light));
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -222,7 +221,7 @@
   font-size: 13px;
   font-weight: 800;
   color: var(--white);
-  border: 2px solid rgba(0,106,78,0.3);
+  border: 2px solid rgba(196,168,130,0.30);
 }
 
 .um-avatar img {
@@ -265,9 +264,9 @@
 }
 
 .um-badge-admin {
-  background: rgba(0,106,78,0.15);
-  color: #4dffa6;
-  border: 1px solid rgba(0,135,95,0.35);
+  background: rgba(196,168,130,0.15);
+  color: var(--white-2);
+  border: 1px solid rgba(196,168,130,0.35);
 }
 
 .um-badge-user {
@@ -418,7 +417,7 @@
   color: var(--muted); position: relative;
   transition: border-color 0.2s;
 }
-.um-photo-circle:hover { border-color: var(--green); }
+.um-photo-circle:hover { border-color: var(--gold-dark); }
 .um-photo-circle img {
   width: 100%; height: 100%;
   object-fit: cover; border-radius: 50%; display: block;
@@ -499,8 +498,8 @@
 .um-field input:focus,
 .um-field select:focus {
   outline: none;
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(0,106,78,0.12);
+  border-color: var(--gold-dark);
+  box-shadow: 0 0 0 3px rgba(196,168,130,0.12);
 }
 
 .um-field input::placeholder { color: var(--muted-2); }
@@ -518,8 +517,8 @@
 }
 
 .um-btn-primary {
-  background: var(--green);
-  color: var(--white);
+  background: var(--gold);
+  color: var(--black);
   border: none;
   padding: 11px 22px;
   border-radius: 9px;
@@ -529,12 +528,10 @@
   letter-spacing: 0.3px;
   cursor: pointer;
   transition: background 0.2s, transform 0.1s;
-  box-shadow: 0 2px 12px rgba(0,106,78,0.25);
 }
 
 .um-btn-primary:hover:not(:disabled) {
-  background: var(--green-light);
-  box-shadow: 0 4px 16px rgba(0,106,78,0.35);
+  background: var(--gold-light);
 }
 
 .um-btn-primary:active:not(:disabled) { transform: scale(0.98); }

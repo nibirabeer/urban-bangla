@@ -101,8 +101,9 @@
 }
 
 .ap-tab.active {
-  color: var(--white);
-  border-bottom-color: var(--white);
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+  font-weight: 700;
 }
 
 .ap-tab-icon {

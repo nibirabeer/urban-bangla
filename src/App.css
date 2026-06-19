@@ -130,8 +130,8 @@
 [data-theme="light"] .lnav-dd-item:hover,
 [data-theme="light"] .profile-nav-item:hover                 { background: rgba(0,0,0,0.05); }
 [data-theme="light"] .profile-nav-item.active                {
-  background: rgba(26,128,96,0.1);
-  border-left-color: var(--green);
+  background: rgba(176,122,37,0.1);
+  border-left-color: var(--gold);
 }
 
 /* ── Role badges ── */
@@ -139,23 +139,23 @@
   background: rgba(0,0,0,0.06); color: var(--muted); border-color: var(--border-2);
 }
 [data-theme="light"] .um-badge-admin {
-  background: rgba(26,128,96,0.12); color: #0F6648; border-color: rgba(26,128,96,0.25);
+  background: rgba(176,122,37,0.12); color: var(--gold-dark); border-color: rgba(176,122,37,0.30);
 }
 
-/* ── Success states (neon green → rich emerald) ── */
+/* ── Success states ── */
 [data-theme="light"] .profile-msg-success,
 [data-theme="light"] .login-success,
 [data-theme="light"] .db-order-success {
-  color: #0C6040;
-  background: rgba(26,128,96,0.1);
-  border-color: rgba(26,128,96,0.22);
+  color: var(--gold-dark);
+  background: rgba(176,122,37,0.08);
+  border-color: rgba(176,122,37,0.22);
 }
-[data-theme="light"] .sm-saved { color: #0C6040; }
+[data-theme="light"] .sm-saved { color: var(--gold-dark); }
 
-/* ── Green accent text & badges ── */
-[data-theme="light"] .address-badge           { color: #0C6040; background: rgba(26,128,96,0.12); }
-[data-theme="light"] .sm-promo-status.on      { color: #0C6040; background: rgba(26,128,96,0.1); }
-[data-theme="light"] .profile-stat-admin      { color: #0C6040; }
+/* ── Gold accent text & badges ── */
+[data-theme="light"] .address-badge           { color: var(--gold-dark); background: rgba(176,122,37,0.10); }
+[data-theme="light"] .sm-promo-status.on      { color: var(--gold-dark); background: rgba(176,122,37,0.08); }
+[data-theme="light"] .profile-stat-admin      { color: var(--gold-dark); }
 [data-theme="light"] .profile-stat-member     { color: var(--gold); }
 
 /* ── Buttons: filter pills & icon buttons ── */
@@ -191,14 +191,14 @@
 [data-theme="light"] .login-left        { background: #EDEAE5; border-right-color: var(--border); }
 [data-theme="light"] .login-left-bg {
   background:
-    radial-gradient(ellipse 70% 70% at 50% 100%, rgba(26,128,96,0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 70% at 50% 100%, rgba(176,122,37,0.12) 0%, transparent 70%),
     radial-gradient(ellipse 40% 40% at 80% 20%, rgba(176,122,37,0.1) 0%, transparent 60%);
 }
 [data-theme="light"] .login-right       { background: #F8F6F2; }
 
 /* ── Profile sidebar banner gradient ── */
 [data-theme="light"] .profile-sidebar-banner {
-  background: linear-gradient(160deg, rgba(26,128,96,0.12) 0%, rgba(26,128,96,0.04) 60%, transparent 100%), #FFFFFF;
+  background: linear-gradient(160deg, rgba(176,122,37,0.10) 0%, rgba(176,122,37,0.03) 60%, transparent 100%), #FFFFFF;
 }
 
 /* ── Hero floating tags ── */
@@ -214,9 +214,9 @@
 [data-theme="light"] .profile-empty-icon,
 [data-theme="light"] .profile-info-icon,
 [data-theme="light"] .wh-trust-icon {
-  background: rgba(26,128,96,0.1);
-  border-color: rgba(26,128,96,0.2);
-  color: var(--green);
+  background: rgba(176,122,37,0.10);
+  border-color: rgba(176,122,37,0.22);
+  color: var(--gold);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
