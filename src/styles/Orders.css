@@ -131,9 +131,9 @@
   z-index: 1;
   flex-shrink: 0;
 }
-.ord-step.done  .ord-step-icon-wrap { background: rgba(196,168,130,0.2);  border-color: var(--green);       color: var(--green-bright); }
+.ord-step.done  .ord-step-icon-wrap { background: rgba(0,106,78,0.2);  border-color: var(--green);       color: var(--green-bright); }
 .ord-step.active .ord-step-icon-wrap { background: var(--green); border-color: var(--green); color: #fff;
-  box-shadow: 0 0 0 4px rgba(196,168,130,0.2);
+  box-shadow: 0 0 0 4px rgba(0,106,78,0.2);
 }
 
 .ord-step-line {
@@ -160,8 +160,8 @@
 
 .ord-tracking-box {
   margin: 0 16px 16px;
-  background: rgba(196,168,130,0.05);
-  border: 1px solid rgba(196,168,130,0.2);
+  background: rgba(0,106,78,0.05);
+  border: 1px solid rgba(0,106,78,0.2);
   border-radius: 12px;
   padding: 14px 16px;
   display: flex;

@@ -504,7 +504,7 @@
 
 .cm-img-add:hover {
   border-color: var(--green);
-  background: rgba(196,168,130,0.06);
+  background: rgba(0,106,78,0.06);
 }
 
 .cm-img-add-icon {
@@ -733,7 +733,7 @@
   padding: 3px 8px; border-radius: 100px;
   margin-bottom: 6px;
 }
-.cm-stock-badge.ok  { background: rgba(196,168,130,0.15);  color: var(--gold); }
+.cm-stock-badge.ok  { background: rgba(0,106,78,0.15);  color: #4dffa6; }
 .cm-stock-badge.low { background: rgba(201,169,110,0.15); color: var(--gold); }
 .cm-stock-badge.out { background: rgba(244,42,65,0.12);  color: var(--red); }
 
@@ -784,7 +784,7 @@
   flex-shrink: 0;
 }
 .inv-kpi-icon-neutral { background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border-2); }
-.inv-kpi-icon-green   { background: rgba(196,168,130,0.15);    color: var(--gold);      border: 1px solid rgba(196,168,130,0.25); }
+.inv-kpi-icon-green   { background: rgba(0,106,78,0.15);    color: #4dffa6;      border: 1px solid rgba(0,106,78,0.25); }
 .inv-kpi-icon-gold    { background: rgba(201,169,110,0.15); color: var(--gold);  border: 1px solid rgba(201,169,110,0.25); }
 .inv-kpi-icon-red     { background: rgba(244,42,65,0.12);   color: var(--red);   border: 1px solid rgba(244,42,65,0.2); }
 
@@ -912,7 +912,7 @@
   background: var(--border-2);
   border: 1.5px solid var(--card-bg);
 }
-.inv-live-dot.live { background: var(--gold); }
+.inv-live-dot.live { background: #4dffa6; }
 
 .inv-product-text { min-width: 0; }
 .inv-product-name {
@@ -979,7 +979,7 @@
   min-width: 24px; text-align: center;
 }
 .inv-qty-pill:hover { transform: scale(1.1); }
-.inv-qty-ok  { background: rgba(196,168,130,0.2);   color: var(--gold); }
+.inv-qty-ok  { background: rgba(0,106,78,0.2);   color: #4dffa6; }
 .inv-qty-low { background: rgba(201,169,110,0.2); color: var(--gold); }
 .inv-qty-out { background: rgba(244,42,65,0.15);  color: var(--red); }
 
@@ -1010,7 +1010,7 @@
   padding: 5px 12px; border-radius: 100px;
   white-space: nowrap;
 }
-.inv-badge-ok   { background: rgba(196,168,130,0.15);    color: var(--gold);      border: 1px solid rgba(196,168,130,0.25); }
+.inv-badge-ok   { background: rgba(0,106,78,0.15);    color: #4dffa6;      border: 1px solid rgba(0,106,78,0.25); }
 .inv-badge-low  { background: rgba(201,169,110,0.15); color: var(--gold);  border: 1px solid rgba(201,169,110,0.25); }
 .inv-badge-out  { background: rgba(244,42,65,0.12);   color: var(--red);   border: 1px solid rgba(244,42,65,0.2); }
 .inv-badge-none { background: var(--border); color: var(--muted); border: 1px solid var(--border-2); }
