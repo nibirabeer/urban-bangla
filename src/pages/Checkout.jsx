@@ -158,7 +158,9 @@ const CheckoutForm = ({ user, addresses, paymentConfig, items, total, clearCart 
   if (success) return (
     <div className="co-page">
       <div className="co-success">
-        <div className="co-success-icon"><CheckCircle size={48} /></div>
+        <div className="co-truck-wrap">
+          <div className="co-truck" />
+        </div>
         <h2>Order Placed!</h2>
         {paymentMethod === "card" ? (
           <p>Payment successful! Your order is confirmed and will be delivered soon.</p>

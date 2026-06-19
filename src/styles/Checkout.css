@@ -182,17 +182,21 @@
 .co-success {
   display: flex; flex-direction: column; align-items: center;
   justify-content: center; min-height: 50vh; text-align: center; gap: 14px;
+  animation: co-success-in 0.5s ease both;
 }
-.co-success-icon { color: var(--green); margin-bottom: 4px; }
+@keyframes co-success-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
 .co-success h2 { font-size: 28px; font-weight: 700; color: var(--white); margin: 0; }
 .co-success p  { font-size: 15px; color: var(--muted); max-width: 380px; margin: 0; }
 .co-success-actions { display: flex; gap: 12px; margin-top: 8px; flex-wrap: wrap; justify-content: center; }
 .co-btn-primary {
-  background: var(--green); color: var(--white); border: none;
+  background: var(--gold); color: var(--black); border: none;
   padding: 13px 28px; border-radius: 10px; font-size: 15px; font-weight: 700;
   font-family: inherit; cursor: pointer; transition: background 0.2s;
 }
-.co-btn-primary:hover { background: var(--green-light); }
+.co-btn-primary:hover { background: var(--gold-light); }
 .co-btn-sec {
   background: transparent; border: 1px solid var(--border-2);
   color: var(--muted); padding: 13px 24px; border-radius: 10px;
@@ -200,6 +204,72 @@
   transition: border-color 0.18s, color 0.18s;
 }
 .co-btn-sec:hover { border-color: var(--white); color: var(--white); }
+
+/* ── Delivery truck animation (order placed) ── */
+.co-truck-wrap {
+  display: flex; justify-content: center;
+  padding: 20px 60px 8px;  /* extra left padding for the speed lines */
+}
+
+.co-truck {
+  position: relative;
+  width: 130px; height: 100px;
+  background-repeat: no-repeat;
+  background-image:
+    linear-gradient(#C4A882, #C4A882),   /* main cargo body — logo gold */
+    linear-gradient(#8A7052, #A08862),   /* cab upper section — dark gold */
+    linear-gradient(#8A7052, #A08862);   /* cab lower section */
+  background-size: 80px 70px, 30px 50px, 30px 30px;
+  background-position: 0 0, 80px 20px, 100px 40px;
+}
+
+/* Wheels */
+.co-truck::after {
+  content: "";
+  position: absolute;
+  bottom: 10px; left: 12px;
+  width: 10px; height: 10px;
+  background: #F5F2EC;
+  border-radius: 50%;
+  box-sizing: content-box;
+  border: 10px solid #111;
+  box-shadow: 78px 0 0 -10px #F5F2EC, 78px 0 #111;
+  animation: co-wheel 0.75s ease-in infinite alternate;
+}
+
+/* Speed lines */
+.co-truck::before {
+  content: "";
+  position: absolute;
+  right: 100%; top: 0;
+  height: 70px; width: 70px;
+  background-image:
+    linear-gradient(#C4A882 45px, transparent 0),
+    linear-gradient(#C4A882 45px, transparent 0),
+    linear-gradient(#C4A882 45px, transparent 0);
+  background-repeat: no-repeat;
+  background-size: 30px 4px;
+  background-position: 0px 11px, 8px 35px, 0px 60px;
+  animation: co-lines 0.75s linear infinite;
+}
+
+@keyframes co-wheel {
+  0%, 50%, 100% { transform: translateY(0); }
+  30%, 90%      { transform: translateY(-3px); }
+}
+
+@keyframes co-lines {
+  0% {
+    background-position: 100px 11px, 115px 35px, 105px 60px;
+    opacity: 1;
+  }
+  50%  { background-position: 0px 11px, 20px 35px, 5px 60px; }
+  60%  { background-position: -30px 11px, 0px 35px, -10px 60px; }
+  75%, 100% {
+    background-position: -30px 11px, -30px 35px, -30px 60px;
+    opacity: 0;
+  }
+}
 
 /* Stripe card element */
 .co-card-section { margin-top: 4px; }
