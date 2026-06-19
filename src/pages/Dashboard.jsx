@@ -51,8 +51,7 @@ const Dashboard = () => {
 
   if (loading) return (
     <div className="db-loading">
-      <div className="db-spinner" />
-      <p>Loading products...</p>
+      <div className="db-shirt-loader" />
     </div>
   );
 
@@ -60,14 +59,15 @@ const Dashboard = () => {
     <div className="db-page">
       <div className="db-header">
         <h1 className="db-title">Shop <span>Collection</span></h1>
-        <div className="db-cats">
-          {CATS.map(c => (
-            <button key={c.key} className={`db-cat-btn ${cat === c.key ? "active" : ""}`} onClick={() => setCat(c.key)}>
-              {c.icon}
-              {c.label}
-            </button>
-          ))}
-        </div>
+        <span className="db-count">{items.length} items</span>
+      </div>
+
+      <div className="db-cats">
+        {CATS.map(c => (
+          <button key={c.key} className={`db-cat-btn ${cat === c.key ? "active" : ""}`} onClick={() => setCat(c.key)}>
+            {c.icon} {c.label}
+          </button>
+        ))}
       </div>
 
       {promotions.length > 0 && (
@@ -82,6 +82,11 @@ const Dashboard = () => {
         </div>
       )}
 
+      <div className="db-grid-bar">
+        <span>All Products</span>
+        <span>{filtered.length} {filtered.length === 1 ? "item" : "items"}</span>
+      </div>
+
       <div className="db-grid">
         {filtered.length === 0 ? (
           <p className="db-empty">No items in this category yet.</p>
@@ -89,7 +94,6 @@ const Dashboard = () => {
           const allOut = item.stock &&
             Object.keys(item.stock).length > 0 &&
             Object.values(item.stock).every(v => v === 0);
-
           return (
             <div
               key={item.id}
@@ -104,24 +108,19 @@ const Dashboard = () => {
                 {item.tag && <span className="db-item-tag">{item.tag}</span>}
                 {item.pinned && <span className="db-item-pin">Featured</span>}
                 {allOut && <div className="db-item-out-overlay">Out of Stock</div>}
-                {!allOut && (
-                  <div className="db-item-hover-overlay">
-                    <span className="db-item-hover-label">View Product →</span>
-                  </div>
-                )}
               </div>
               <div className="db-item-info">
                 <p className="db-item-cat">{item.category}</p>
                 <h3 className="db-item-name">{item.name}</h3>
                 <div className="db-item-footer">
-                  <p className="db-item-price"><span>৳</span>{item.price}</p>
+                  <p className="db-item-price">৳{item.price}</p>
                   {item.sizes?.length > 0 && !allOut && (
                     <div className="db-item-sizes-preview">
-                      {item.sizes.slice(0, 4).map(s => (
+                      {item.sizes.slice(0, 3).map(s => (
                         <span key={s} className="db-item-size-dot">{s}</span>
                       ))}
-                      {item.sizes.length > 4 && (
-                        <span className="db-item-size-dot">+{item.sizes.length - 4}</span>
+                      {item.sizes.length > 3 && (
+                        <span className="db-item-size-dot">+{item.sizes.length - 3}</span>
                       )}
                     </div>
                   )}
