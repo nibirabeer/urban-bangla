@@ -94,8 +94,7 @@ const ProductPage = () => {
 
   if (loading) return (
     <div className="pp-loading">
-      <div className="pp-spinner" />
-      <p>Loading product...</p>
+      <div className="cloth-loader" />
     </div>
   );
 
@@ -161,7 +160,17 @@ const ProductPage = () => {
           <div className="pp-info">
             <p className="pp-cat">{item.category}</p>
             <h1 className="pp-name">{item.name}</h1>
-            <p className="pp-price"><span className="pp-currency">৳</span>{item.price}</p>
+            {item.originalPrice > 0 && item.originalPrice > item.price ? (
+              <div className="pp-price-wrap">
+                <span className="pp-original-price">৳{item.originalPrice}</span>
+                <p className="pp-price"><span className="pp-currency">৳</span>{item.price}</p>
+                <span className="pp-sale-pct">
+                  -{Math.round((item.originalPrice - item.price) / item.originalPrice * 100)}% OFF
+                </span>
+              </div>
+            ) : (
+              <p className="pp-price"><span className="pp-currency">৳</span>{item.price}</p>
+            )}
 
             {!allOut && (
               <>
@@ -290,11 +299,18 @@ const ProductPage = () => {
                     <div className="pp-rel-img-wrap">
                       <img src={r.photoURL} alt={r.name} className="pp-rel-img pp-rel-img-main" />
                       {altImg && <img src={altImg} alt="" className="pp-rel-img pp-rel-img-alt" />}
-                      {r.tag && <span className="pp-rel-badge">{r.tag}</span>}
+                      {r.originalPrice > 0 && r.originalPrice > r.price
+                        ? <span className="pp-rel-badge pp-rel-badge-sale">SALE</span>
+                        : r.tag && <span className="pp-rel-badge">{r.tag}</span>}
                     </div>
                     <div className="pp-rel-info">
                       <h3 className="pp-rel-name">{r.name}</h3>
-                      <p className="pp-rel-price">৳{r.price}</p>
+                      <div className="pp-rel-price-row">
+                        {r.originalPrice > 0 && r.originalPrice > r.price && (
+                          <span className="pp-rel-original">৳{r.originalPrice}</span>
+                        )}
+                        <p className="pp-rel-price">৳{r.price}</p>
+                      </div>
                     </div>
                   </div>
                 );

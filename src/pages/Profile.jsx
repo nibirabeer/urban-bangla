@@ -148,8 +148,7 @@ const Profile = () => {
 
   if (!userData) return (
     <div className="profile-loading">
-      <div className="profile-loading-spinner" />
-      <p>Loading your profile...</p>
+      <div className="cloth-loader" />
     </div>
   );
 

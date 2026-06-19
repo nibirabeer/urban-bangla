@@ -163,8 +163,12 @@
 [data-theme="light"] .cl-filter-btn,
 [data-theme="light"] .wh-cat-chip,
 [data-theme="light"] .wh-link-btn,
-[data-theme="light"] .lnav-theme-btn,
 [data-theme="light"] .navbar-theme-btn          { background: #FFFFFF; }
+
+/* Theme switcher: all three buttons same warm-gray fill in light mode */
+[data-theme="light"] .lnav-theme-btn            { background: #F0EEE9; border-color: #D8D5CF; }
+[data-theme="light"] .lnav-theme-btn:hover      { color: var(--white); border-color: var(--border-2); }
+[data-theme="light"] .lnav-theme-btn.active     { border-color: var(--gold); color: var(--gold-dark); }
 
 /* ── Grid lines in hero sections (were invisible white) ── */
 [data-theme="light"] .wh-hero-bg::after,
@@ -218,6 +222,40 @@
   border-color: rgba(176,122,37,0.22);
   color: var(--gold);
 }
+
+/* ── Mobile bottom nav: active states unreadable on light bg ── */
+[data-theme="light"] .mob-nav { background: #FFFFFF; border-top-color: var(--border); }
+[data-theme="light"] .mob-tab.active { color: var(--white); }
+[data-theme="light"] .mob-tab.active::after { background: var(--gold); }
+[data-theme="light"] .mob-tab-signin { color: var(--gold); }
+
+/* ── Buttons on green/gold: black text in dark, white text in light ── */
+[data-theme="light"] .profile-btn-primary,
+[data-theme="light"] .address-label-btn.active,
+[data-theme="light"] .ord-shop-link,
+[data-theme="light"] .ord-track-btn,
+[data-theme="light"] .co-place-btn,
+[data-theme="light"] .cart-shop-btn,
+[data-theme="light"] .cart-checkout-btn,
+[data-theme="light"] .cd-empty-cta,
+[data-theme="light"] .cd-checkout-btn,
+[data-theme="light"] .sm-promo-preview-btn { color: #fff; }
+
+/* ── Active step in order timeline: visible on emerald in light ── */
+[data-theme="light"] .ord-step.active .ord-step-icon-wrap { color: #fff; }
+
+/* ── Avatar initials: dark text on gold (dark), white text on green (light) ── */
+[data-theme="light"] .lnav-avatar-init,
+[data-theme="light"] .lnav-dd-avatar-init { color: #fff; }
+
+/* ── Nav active links: visible highlight on light backgrounds ── */
+[data-theme="light"] .nav-link.active,
+[data-theme="light"] .lnav-link.active,
+[data-theme="light"] .admin-link.active { background: var(--border); color: var(--white); }
+
+/* ── Cart count badge in header ── */
+[data-theme="light"] .cd-header-count,
+[data-theme="light"] .co-summary-qty { color: #fff; }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -292,15 +330,18 @@ body,
   }
 }
 
-/* ── Shared loader animation ── */
-@keyframes l5 {
-  0%    { -webkit-mask-size: 0    0  , 0    0  , 0    0  , 0    0  , auto }
-  12.5% { -webkit-mask-size: var(--s), 0    0  , 0    0  , 0    0  , auto }
-  25%   { -webkit-mask-size: var(--s), var(--s), 0    0  , 0    0  , auto }
-  37.5% { -webkit-mask-size: var(--s), var(--s), var(--s), 0    0  , auto }
-  50%   { -webkit-mask-size: var(--s), var(--s), var(--s), var(--s), auto }
-  62.5% { -webkit-mask-size: 0    0  , var(--s), var(--s), var(--s), auto }
-  75%   { -webkit-mask-size: 0    0  , 0    0  , var(--s), var(--s), auto }
-  87.5% { -webkit-mask-size: 0    0  , 0    0  , 0    0  , var(--s), auto }
-  100%  { -webkit-mask-size: 0    0  , 0    0  , 0    0  , 0    0  , auto }
+/* ── Shared cloth/shirt loader ── */
+.cloth-loading {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 60vh;
+}
+.cloth-loader {
+  width: 54px; height: 54px;
+  background: var(--gold);
+  clip-path: polygon(28% 0%, 0% 20%, 0% 42%, 22% 32%, 22% 100%, 78% 100%, 78% 32%, 100% 42%, 100% 20%, 72% 0%, 62% 14%, 50% 19%, 38% 14%);
+  animation: cloth-pulse 1.2s ease-in-out infinite;
+}
+@keyframes cloth-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.35; transform: scale(0.86); }
 }

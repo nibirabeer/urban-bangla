@@ -80,11 +80,11 @@
 
 .pb-cta {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--green); color: var(--white); border: none;
+  background: var(--green); color: var(--black); border: none;
   padding: 13px 30px; border-radius: 10px;
   font-size: 15px; font-weight: 700; font-family: inherit;
   cursor: pointer; transition: background 0.2s, transform 0.15s;
-  box-shadow: 0 6px 24px rgba(0,106,78,0.4);
+  box-shadow: 0 6px 24px rgba(196,168,130,0.35);
 }
 .pb-cta:hover { background: var(--green-light); transform: translateY(-2px); }
 

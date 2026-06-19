@@ -1,22 +1,4 @@
-.cl-loading {
-  display: flex; flex-direction: column; align-items: center;
-  justify-content: center; min-height: 60vh; gap: 16px; color: var(--muted);
-}
-.cl-spinner {
-  width: 44px; height: 44px;
-  background: var(--green);
-  --c: no-repeat linear-gradient(#000 0 0);
-  --s: 16px 16px;
-  -webkit-mask:
-    var(--c) left  4px top    4px,
-    var(--c) right 4px top    4px,
-    var(--c) right 4px bottom 4px,
-    var(--c) left  4px bottom 4px,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  animation: l5 1.5s infinite;
-}
+.cl-loading { display: flex; align-items: center; justify-content: center; min-height: 60vh; }
 .cl-error { text-align: center; padding: 60px; color: var(--red); }
 
 /* HERO */
@@ -95,7 +77,7 @@
 .cl-hero-line-2 {
   font-size: clamp(36px, 6vw, 64px);
   font-weight: 700;
-  color: var(--muted);
+  color: var(--gold);
   line-height: 1;
   margin-top: -8px;
 }
@@ -287,13 +269,13 @@
 
 .cl-badge {
   position: absolute; top: 12px; left: 12px;
-  font-size: 10px; font-weight: 700; letter-spacing: 1px;
+  font-size: 9px; font-weight: 800; letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding: 4px 12px; border-radius: 100px;
+  padding: 4px 10px; border-radius: 0;
 }
-.cl-badge-new { background: var(--green); color: var(--white); }
-.cl-badge-sale { background: var(--red); color: var(--white); }
-.cl-badge-limited { background: var(--gold); color: var(--black); }
+.cl-badge-new        { background: var(--green); color: var(--black); }
+.cl-badge-sale       { background: #E52035; color: #fff; }
+.cl-badge-limited    { background: var(--gold); color: var(--black); }
 .cl-badge-wc, .cl-badge-worldcup { background: var(--gold); color: var(--black); }
 .cl-badge-bestseller { background: var(--off-black); border: 1px solid var(--gold-dark); color: var(--gold); }
 
@@ -326,12 +308,24 @@
 .cl-size-more { border-color: transparent; color: var(--muted-2); }
 
 .cl-card-footer {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 8px;
 }
 
+.cl-price-col { display: flex; flex-direction: column; gap: 1px; }
+.cl-original-price {
+  font-family: var(--font-bangla); font-size: 13px;
+  color: var(--muted); text-decoration: line-through;
+}
+.cl-price-row { display: flex; align-items: center; gap: 8px; }
 .cl-price-wrap { display: flex; align-items: baseline; gap: 2px; }
 .cl-currency { font-family: var(--font-bangla); font-size: 18px; color: var(--muted); font-weight: 700; }
 .cl-price { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--white); letter-spacing: 1px; }
+.cl-sale-pct {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.5px;
+  background: rgba(229,32,53,0.14); color: #F03850;
+  border: 1px solid rgba(229,32,53,0.28);
+  padding: 2px 6px;
+}
 
 .cl-buy-btn {
   background: var(--gold);

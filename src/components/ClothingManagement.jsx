@@ -21,7 +21,7 @@ const CAT_LABELS = {
   "T-Shirt":"T-Shirt", Hoodie:"Hoodie", Trouser:"Trouser", Accessories:"Accessories",
 };
 
-const empty = { name: "", price: "", category: "", stock: {}, tag: "", photos: [] };
+const empty = { name: "", price: "", originalPrice: "", category: "", stock: {}, tag: "", photos: [] };
 
 /* ─── pure helpers ────────────────────────────────────────────── */
 const stockStatus = (stock) => {
@@ -264,6 +264,7 @@ const ClothingManagement = () => {
       const photoURLs = await uploadAll(newFiles);
       await addDoc(collection(db, "clothing"), {
         name: newItem.name, price: Number(newItem.price),
+        originalPrice: Number(newItem.originalPrice) || 0,
         category: newItem.category, sizes: Object.keys(newItem.stock),
         stock: newItem.stock, tag: newItem.tag,
         photoURL: photoURLs[0], photoURLs, display: false, createdAt: new Date(),
@@ -287,6 +288,7 @@ const ClothingManagement = () => {
       if (photoURLs.length === 0) { setError("At least one photo is required."); return; }
       await updateDoc(doc(db, "clothing", editingId), {
         name: updatedItem.name, price: Number(updatedItem.price),
+        originalPrice: Number(updatedItem.originalPrice) || 0,
         category: updatedItem.category, sizes: Object.keys(updatedItem.stock),
         stock: updatedItem.stock, tag: updatedItem.tag,
         photoURL: photoURLs[0], photoURLs, display: updatedItem.display,
@@ -664,9 +666,13 @@ const ClothingManagement = () => {
               <input className="cm-input" placeholder="e.g. Bangladesh Jersey 2026"
                 value={newItem.name} onChange={e => setNewItem({ ...newItem, name: e.target.value })}/>
             </Field>
-            <Field label="Price (৳)">
-              <input className="cm-input" type="number" placeholder="e.g. 1200"
+            <Field label="Sale Price (৳)">
+              <input className="cm-input" type="number" placeholder="e.g. 900"
                 value={newItem.price} onChange={e => setNewItem({ ...newItem, price: e.target.value })}/>
+            </Field>
+            <Field label="Original Price (৳)" hint="optional — set to show discount %">
+              <input className="cm-input" type="number" placeholder="e.g. 1200 (leave blank if no sale)"
+                value={newItem.originalPrice} onChange={e => setNewItem({ ...newItem, originalPrice: e.target.value })}/>
             </Field>
             <Field label="Category">
               <select className="cm-input" value={newItem.category} onChange={e => changeNewItemCategory(e.target.value)}>
@@ -710,9 +716,14 @@ const ClothingManagement = () => {
               <input className="cm-input" value={updatedItem.name}
                 onChange={e => setUpdatedItem({ ...updatedItem, name: e.target.value })}/>
             </Field>
-            <Field label="Price (৳)">
+            <Field label="Sale Price (৳)">
               <input className="cm-input" type="number" value={updatedItem.price}
                 onChange={e => setUpdatedItem({ ...updatedItem, price: e.target.value })}/>
+            </Field>
+            <Field label="Original Price (৳)" hint="optional — set to show discount %">
+              <input className="cm-input" type="number" value={updatedItem.originalPrice || ""}
+                placeholder="Leave blank if no sale"
+                onChange={e => setUpdatedItem({ ...updatedItem, originalPrice: e.target.value })}/>
             </Field>
             <Field label="Category">
               <select className="cm-input" value={updatedItem.category}

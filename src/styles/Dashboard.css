@@ -98,8 +98,9 @@
 }
 .db-promo-green { background: rgba(196,168,130,0.08); border-color: rgba(196,168,130,0.22); color: var(--gold); }
 .db-promo-green  .db-promo-badge { background: var(--gold); color: var(--black); }
-.db-promo-red   { background: rgba(244,42,65,0.07); border-color: rgba(244,42,65,0.2); color: var(--red); }
-.db-promo-red    .db-promo-badge { background: var(--red); color: #fff; }
+.db-promo-red   { background: rgba(220,30,50,0.10); border-color: rgba(220,30,50,0.38); color: #F03850; }
+.db-promo-red    .db-promo-badge { background: #E52035; color: #fff; letter-spacing: 1.5px; }
+.db-promo-red .db-promo-title { color: #F03850; font-weight: 800; }
 .db-promo-gold  { background: rgba(196,168,130,0.07); border-color: rgba(196,168,130,0.2); color: var(--gold); }
 .db-promo-gold   .db-promo-badge { background: var(--gold); color: var(--black); }
 .db-promo-dark  { background: var(--off-black); border-color: var(--border-2); color: var(--muted); }
@@ -166,6 +167,12 @@
 .db-item-card:hover .db-item-img-alt { opacity: 1; }
 
 /* Flat badges — no border-radius */
+.db-item-sale-tag {
+  position: absolute; top: 12px; left: 12px; z-index: 3;
+  background: #E52035; color: #fff;
+  font-size: 9px; font-weight: 800; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 4px 10px;
+}
 .db-item-tag {
   position: absolute; top: 12px; left: 12px; z-index: 3;
   background: var(--gold); color: var(--black);
@@ -203,13 +210,28 @@
   line-height: 1.35;
 }
 .db-item-footer {
-  display: flex; align-items: center;
+  display: flex; align-items: flex-end;
   justify-content: space-between;
+  gap: 8px;
 }
+.db-item-price-col { display: flex; flex-direction: column; gap: 2px; }
+.db-item-original-price {
+  font-family: var(--font-bangla);
+  font-size: 11px; color: var(--muted);
+  text-decoration: line-through;
+}
+.db-item-price-row { display: flex; align-items: center; gap: 6px; }
 .db-item-price {
   font-family: var(--font-bangla);
   font-size: 14px; font-weight: 700;
-  color: var(--gold);
+  color: var(--gold); margin: 0;
+}
+.db-sale-pct {
+  font-size: 9px; font-weight: 800; letter-spacing: 0.5px;
+  background: rgba(229,32,53,0.14);
+  color: #F03850;
+  border: 1px solid rgba(229,32,53,0.28);
+  padding: 2px 5px;
 }
 .db-item-sizes-preview { display: flex; gap: 4px; flex-wrap: wrap; }
 .db-item-size-dot {

@@ -50,7 +50,7 @@
   font-family: var(--font-bangla);
   font-size: 13px;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--gold);
   letter-spacing: 1px;
 }
 
@@ -104,7 +104,7 @@
 }
 
 .nav-link:hover { color: var(--white); background: var(--border); }
-.nav-link.active { color: var(--white); background: rgba(255,255,255,0.07); }
+.nav-link.active { color: var(--white); background: var(--border); }
 .about-btn { cursor: pointer; }
 
 /* Theme cycle button (guest navbar) */
@@ -168,7 +168,7 @@
   color: var(--white);
   margin-bottom: 20px;
 }
-.about-title span { color: var(--white); }
+.about-title span { color: var(--gold); }
 
 .about-desc {
   color: var(--muted);

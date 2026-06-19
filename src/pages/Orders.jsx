@@ -96,8 +96,7 @@ const Orders = () => {
 
   if (loading) return (
     <div className="ord-loading">
-      <div className="ord-spinner"/>
-      <p>Loading orders…</p>
+      <div className="cloth-loader" />
     </div>
   );
 

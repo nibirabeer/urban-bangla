@@ -1,22 +1,4 @@
-.ord-loading {
-  display: flex; flex-direction: column; align-items: center;
-  justify-content: center; min-height: 60vh; gap: 16px; color: var(--muted);
-}
-.ord-spinner {
-  width: 44px; height: 44px;
-  background: var(--green);
-  --c: no-repeat linear-gradient(#000 0 0);
-  --s: 16px 16px;
-  -webkit-mask:
-    var(--c) left  4px top    4px,
-    var(--c) right 4px top    4px,
-    var(--c) right 4px bottom 4px,
-    var(--c) left  4px bottom 4px,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  animation: l5 1.5s infinite;
-}
+.ord-loading { display: flex; align-items: center; justify-content: center; min-height: 60vh; }
 
 .ord-page {
   width: 100%;
@@ -41,7 +23,7 @@
 .ord-empty p { color: var(--muted); font-size: 16px; margin-bottom: 20px; }
 .ord-shop-link {
   display: inline-block;
-  background: var(--green); color: var(--white);
+  background: var(--green); color: var(--black);
   padding: 10px 24px; border-radius: 8px;
   font-weight: 700; font-size: 15px; transition: background 0.2s;
 }
@@ -131,9 +113,9 @@
   z-index: 1;
   flex-shrink: 0;
 }
-.ord-step.done  .ord-step-icon-wrap { background: rgba(0,106,78,0.2);  border-color: var(--green);       color: var(--green-bright); }
-.ord-step.active .ord-step-icon-wrap { background: var(--green); border-color: var(--green); color: #fff;
-  box-shadow: 0 0 0 4px rgba(0,106,78,0.2);
+.ord-step.done  .ord-step-icon-wrap { background: rgba(196,168,130,0.15); border-color: var(--green); color: var(--green-bright); }
+.ord-step.active .ord-step-icon-wrap { background: var(--green); border-color: var(--green); color: var(--black);
+  box-shadow: 0 0 0 4px rgba(196,168,130,0.25);
 }
 
 .ord-step-line {
@@ -160,8 +142,8 @@
 
 .ord-tracking-box {
   margin: 0 16px 16px;
-  background: rgba(0,106,78,0.05);
-  border: 1px solid rgba(0,106,78,0.2);
+  background: rgba(196,168,130,0.05);
+  border: 1px solid rgba(196,168,130,0.2);
   border-radius: 12px;
   padding: 14px 16px;
   display: flex;
@@ -186,7 +168,7 @@
 
 .ord-track-btn {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--green); color: #fff;
+  background: var(--green); color: var(--black);
   text-decoration: none; padding: 11px 22px;
   border-radius: 10px; font-size: 14px; font-weight: 700;
   transition: background-color 0.18s; align-self: flex-start;

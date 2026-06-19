@@ -13,6 +13,7 @@ import AdminRoute from "./components/AdminRoute";
 import MobileBottomNav from "./components/MobileBottomNav";
 import CartDrawer from "./components/CartDrawer";
 import Preloader from "./components/Preloader";
+import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Orders from "./pages/Orders";
 import Cart from "./pages/Cart";
@@ -72,6 +73,7 @@ function App() {
         <div className="mob-nav-spacer" aria-hidden="true" />
         <MobileBottomNav isLoggedIn={isLoggedIn} />
         {isLoggedIn && <CartDrawer />}
+        <ScrollToTop />
       </div>
     </Router>
     </CartProvider>

@@ -1,8 +1,4 @@
-.om-loading {
-  padding: 40px;
-  color: var(--muted);
-  text-align: center;
-}
+.om-loading { display: flex; align-items: center; justify-content: center; min-height: 40vh; }
 
 .om-title {
   font-family: var(--font-bangla);

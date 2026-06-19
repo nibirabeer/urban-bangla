@@ -43,14 +43,15 @@
   font-size: 40px; font-weight: 700; letter-spacing: 4px;
   color: var(--white); margin-bottom: 16px;
 }
+.login-brand-bn { color: var(--gold); }
 .login-tagline {
   font-size: 20px; line-height: 1.6;
   color: var(--muted); margin-bottom: 36px;
 }
 .login-features { display: flex; flex-direction: column; gap: 10px; }
 .login-feature-item {
-  background: rgba(0,106,78,0.12);
-  border: 1px solid rgba(0,106,78,0.3);
+  background: rgba(196,168,130,0.10);
+  border: 1px solid rgba(196,168,130,0.22);
   color: var(--white-2);
   padding: 10px 20px; border-radius: 8px;
   font-size: 14px; font-weight: 600; text-align: left;

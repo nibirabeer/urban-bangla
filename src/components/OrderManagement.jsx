@@ -165,7 +165,7 @@ const OrderManagement = () => {
     ));
   };
 
-  if (loading) return <div className="om-loading">Loading orders…</div>;
+  if (loading) return <div className="om-loading"><div className="cloth-loader" /></div>;
 
   return (
     <div className="om-container">

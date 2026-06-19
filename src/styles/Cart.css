@@ -22,11 +22,11 @@
 .cart-empty p  { font-size: 14px; color: var(--muted); margin: 0; }
 .cart-shop-btn {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--green); color: var(--white); border: none;
+  background: var(--green); color: var(--black); border: none;
   padding: 13px 28px; border-radius: 10px;
   font-size: 15px; font-weight: 700; font-family: inherit;
   margin-top: 8px; cursor: pointer; transition: background 0.2s;
-  box-shadow: 0 4px 16px rgba(0,106,78,0.3);
+  box-shadow: 0 4px 16px rgba(196,168,130,0.25);
 }
 .cart-shop-btn:hover { background: var(--green-light); }
 
@@ -130,11 +130,11 @@
 
 .cart-checkout-btn {
   width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
-  background: var(--green); color: var(--white); border: none;
+  background: var(--green); color: var(--black); border: none;
   padding: 14px; border-radius: 10px;
   font-size: 15px; font-weight: 700; font-family: inherit;
   cursor: pointer; transition: background 0.2s;
-  box-shadow: 0 4px 16px rgba(0,106,78,0.3);
+  box-shadow: 0 4px 16px rgba(196,168,130,0.25);
   margin-bottom: 10px;
 }
 .cart-checkout-btn:hover { background: var(--green-light); }

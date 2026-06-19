@@ -1,19 +1,6 @@
 /* ProductPage.css */
 
-.pp-loading {
-  display: flex; flex-direction: column; align-items: center;
-  justify-content: center; min-height: 60vh; gap: 16px; color: var(--muted);
-}
-.pp-spinner {
-  width: 44px; height: 44px; background: var(--green);
-  --c: no-repeat linear-gradient(#000 0 0); --s: 16px 16px;
-  -webkit-mask:
-    var(--c) left 4px top 4px, var(--c) right 4px top 4px,
-    var(--c) right 4px bottom 4px, var(--c) left 4px bottom 4px,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude;
-  animation: l5 1.5s infinite;
-}
+.pp-loading { display: flex; align-items: center; justify-content: center; min-height: 60vh; }
 
 .pp-notfound {
   display: flex; flex-direction: column; align-items: center;
@@ -79,7 +66,7 @@
   padding: 4px 10px; border-radius: 100px;
   font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
 }
-.pp-badge-new        { background: var(--green);  color: #fff; }
+.pp-badge-new        { background: var(--green);  color: var(--black); }
 .pp-badge-bestseller { background: var(--gold);   color: #000; }
 .pp-badge-sale       { background: var(--red);    color: #fff; }
 .pp-badge-limited    { background: #9b7ff5;        color: #fff; }
@@ -143,6 +130,24 @@
   margin: 0 0 16px;
   line-height: 1.15;
 }
+.pp-price-wrap {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.pp-original-price {
+  font-size: 20px; font-weight: 600;
+  color: var(--muted); text-decoration: line-through;
+  font-family: var(--font-bangla);
+}
+.pp-price-wrap .pp-price { margin-bottom: 0; }
+.pp-sale-pct {
+  display: inline-flex; align-items: center;
+  font-size: 12px; font-weight: 800; letter-spacing: 1px;
+  background: rgba(229,32,53,0.14);
+  color: #F03850;
+  border: 1px solid rgba(229,32,53,0.30);
+  padding: 4px 10px;
+}
 .pp-price {
   font-size: 28px; font-weight: 800;
   color: var(--white); margin: 0 0 28px;
@@ -178,7 +183,7 @@
   transition: border-color 0.15s, background 0.15s;
 }
 .pp-size-btn:hover:not(:disabled):not(.active) { border-color: var(--gold-dark); }
-.pp-size-btn.active { background: var(--green); border-color: var(--green); color: #fff; }
+.pp-size-btn.active { background: var(--green); border-color: var(--green); color: var(--black); }
 .pp-size-btn.sold-out { opacity: 0.35; text-decoration: line-through; cursor: not-allowed; }
 .pp-size-btn.low-stock { border-color: #c9a96e88; }
 .pp-size-btn-err { border-color: var(--red) !important; }
@@ -217,12 +222,12 @@
 }
 .pp-qty-btn {
   width: 40px; height: 40px;
-  background: #141414; color: var(--white);
+  background: var(--border); color: var(--white);
   font-size: 18px; font-weight: 700;
   border: none;
   transition: background 0.15s;
 }
-.pp-qty-btn:hover:not(:disabled) { background: #222; }
+.pp-qty-btn:hover:not(:disabled) { background: var(--border-2); }
 .pp-qty-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 .pp-qty-val {
   width: 48px; text-align: center;
@@ -320,12 +325,20 @@
   font-size: 9px; font-weight: 800; letter-spacing: 1px;
   text-transform: uppercase; padding: 3px 8px;
 }
+.pp-rel-badge-sale {
+  background: #E52035; color: #fff;
+}
 
 .pp-rel-name {
   font-family: var(--font-display);
   font-size: 16px; font-weight: 700;
   color: var(--white); margin: 0 0 4px;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pp-rel-price-row { display: flex; align-items: center; gap: 6px; }
+.pp-rel-original {
+  font-size: 11px; color: var(--muted);
+  text-decoration: line-through; font-family: var(--font-bangla);
 }
 .pp-rel-price {
   font-size: 14px; font-weight: 700;

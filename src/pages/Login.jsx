@@ -138,7 +138,7 @@ const Login = ({ setIsLoggedIn }) => {
         <div className="login-left-bg" />
         <div className="login-left-content">
           <img src="/urban-bangla-logo.png" alt="logo" className="login-logo" />
-          <h1 className="login-brand">URBAN বাংলা</h1>
+          <h1 className="login-brand">URBAN <span className="login-brand-bn">বাংলা</span></h1>
           <p className="login-tagline">Bangladesh style.<br />Street fashion, delivered.</p>
           <div className="login-features">
             {["Jerseys", "Bangladesh Flags", "Streetwear", "Fast Delivery"].map(f => (
@@ -156,7 +156,7 @@ const Login = ({ setIsLoggedIn }) => {
           <div className="login-mobile-brand">
             <img src="/urban-bangla-logo.png" alt="logo" className="login-mobile-logo" />
             <div>
-              <div className="login-mobile-name">URBAN বাংলা</div>
+              <div className="login-mobile-name">URBAN <span className="login-brand-bn">বাংলা</span></div>
               <div className="login-mobile-sub">Bangladesh Street Fashion</div>
             </div>
           </div>

@@ -49,8 +49,7 @@ const ClothingList = () => {
 
   if (loading) return (
     <div className="cl-loading">
-      <div className="cl-spinner" />
-      <p>Loading...</p>
+      <div className="cloth-loader" />
     </div>
   );
 
@@ -135,11 +134,18 @@ const ClothingList = () => {
           </div>
         ) : (
           <div className="cl-grid">
-            {filtered.map((item) => (
+            {filtered.map((item) => {
+              const salePercent = item.originalPrice > 0 && item.originalPrice > item.price
+                ? Math.round((item.originalPrice - item.price) / item.originalPrice * 100)
+                : 0;
+              return (
               <div key={item.id} className="cl-card" onClick={() => navigate(`/product/${item.id}`)}>
                 <div className="cl-card-img-wrap">
                   <img src={item.photoURL} alt={item.name} className="cl-card-img" />
-                  {item.tag && <span className={`cl-badge cl-badge-${item.tag.toLowerCase()}`}>{item.tag}</span>}
+                  {salePercent > 0
+                    ? <span className="cl-badge cl-badge-sale">SALE</span>
+                    : item.tag && <span className={`cl-badge cl-badge-${item.tag.toLowerCase()}`}>{item.tag}</span>
+                  }
                   <div className="cl-card-overlay">
                     <span>Sign in to buy</span>
                   </div>
@@ -156,9 +162,19 @@ const ClothingList = () => {
                     )}
                   </div>
                   <div className="cl-card-footer">
-                    <div className="cl-price-wrap">
-                      <span className="cl-currency">৳</span>
-                      <span className="cl-price">{item.price}</span>
+                    <div className="cl-price-col">
+                      {salePercent > 0 && (
+                        <span className="cl-original-price">৳{item.originalPrice}</span>
+                      )}
+                      <div className="cl-price-row">
+                        <div className="cl-price-wrap">
+                          <span className="cl-currency">৳</span>
+                          <span className="cl-price">{item.price}</span>
+                        </div>
+                        {salePercent > 0 && (
+                          <span className="cl-sale-pct">-{salePercent}%</span>
+                        )}
+                      </div>
                     </div>
                     <button className="cl-buy-btn" onClick={(e) => { e.stopPropagation(); navigate(`/product/${item.id}`); }}>
                       Buy Now
@@ -166,7 +182,8 @@ const ClothingList = () => {
                   </div>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

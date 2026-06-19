@@ -51,7 +51,7 @@ const Dashboard = () => {
 
   if (loading) return (
     <div className="db-loading">
-      <div className="db-shirt-loader" />
+      <div className="cloth-loader" />
     </div>
   );
 
@@ -94,6 +94,9 @@ const Dashboard = () => {
           const allOut = item.stock &&
             Object.keys(item.stock).length > 0 &&
             Object.values(item.stock).every(v => v === 0);
+          const salePercent = item.originalPrice > 0 && item.originalPrice > item.price
+            ? Math.round((item.originalPrice - item.price) / item.originalPrice * 100)
+            : 0;
           return (
             <div
               key={item.id}
@@ -105,7 +108,8 @@ const Dashboard = () => {
                 {item.photoURLs?.[1] && (
                   <img src={item.photoURLs[1]} alt="" className="db-item-img-alt" />
                 )}
-                {item.tag && <span className="db-item-tag">{item.tag}</span>}
+                {salePercent > 0 && !allOut && <span className="db-item-sale-tag">SALE</span>}
+                {item.tag && !salePercent && <span className="db-item-tag">{item.tag}</span>}
                 {item.pinned && <span className="db-item-pin">Featured</span>}
                 {allOut && <div className="db-item-out-overlay">Out of Stock</div>}
               </div>
@@ -113,7 +117,17 @@ const Dashboard = () => {
                 <p className="db-item-cat">{item.category}</p>
                 <h3 className="db-item-name">{item.name}</h3>
                 <div className="db-item-footer">
-                  <p className="db-item-price">৳{item.price}</p>
+                  <div className="db-item-price-col">
+                    {salePercent > 0 && (
+                      <span className="db-item-original-price">৳{item.originalPrice}</span>
+                    )}
+                    <div className="db-item-price-row">
+                      <p className="db-item-price">৳{item.price}</p>
+                      {salePercent > 0 && (
+                        <span className="db-sale-pct">-{salePercent}%</span>
+                      )}
+                    </div>
+                  </div>
                   {item.sizes?.length > 0 && !allOut && (
                     <div className="db-item-sizes-preview">
                       {item.sizes.slice(0, 3).map(s => (
