@@ -172,7 +172,7 @@ const WelcomeHero = () => {
             </div>
             <div className="wh-products-grid">
               {featured.map(item => (
-                <div key={item.id} className="wh-product-card" onClick={() => navigate("/dashboard")}>
+                <div key={item.id} className="wh-product-card" onClick={() => navigate(`/product/${item.id}`)}>
                   <div className="wh-product-img-wrap">
                     <img src={item.photoURL} alt={item.name} className="wh-product-img" />
                     {item.tag && <span className={`wh-product-tag wh-product-tag-${item.tag.toLowerCase()}`}>{item.tag}</span>}
@@ -182,7 +182,7 @@ const WelcomeHero = () => {
                     <h3 className="wh-product-name">{item.name}</h3>
                     <div className="wh-product-footer">
                       <span className="wh-product-price">৳{item.price}</span>
-                      <button className="wh-product-btn" onClick={e => { e.stopPropagation(); navigate("/dashboard"); }}>
+                      <button className="wh-product-btn" onClick={e => { e.stopPropagation(); navigate(`/product/${item.id}`); }}>
                         Buy Now
                       </button>
                     </div>
@@ -225,7 +225,7 @@ const WelcomeHero = () => {
             </div>
             <div className="wh-products-grid">
               {newArrivals.map(item => (
-                <div key={item.id} className="wh-product-card" onClick={() => navigate("/dashboard")}>
+                <div key={item.id} className="wh-product-card" onClick={() => navigate(`/product/${item.id}`)}>
                   <div className="wh-product-img-wrap">
                     <img src={item.photoURL} alt={item.name} className="wh-product-img" />
                     {item.tag && <span className={`wh-product-tag wh-product-tag-${item.tag.toLowerCase()}`}>{item.tag}</span>}
@@ -235,7 +235,7 @@ const WelcomeHero = () => {
                     <h3 className="wh-product-name">{item.name}</h3>
                     <div className="wh-product-footer">
                       <span className="wh-product-price">৳{item.price}</span>
-                      <button className="wh-product-btn" onClick={e => { e.stopPropagation(); navigate("/dashboard"); }}>
+                      <button className="wh-product-btn" onClick={e => { e.stopPropagation(); navigate(`/product/${item.id}`); }}>
                         Buy Now
                       </button>
                     </div>

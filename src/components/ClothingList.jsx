@@ -136,7 +136,7 @@ const ClothingList = () => {
         ) : (
           <div className="cl-grid">
             {filtered.map((item) => (
-              <div key={item.id} className="cl-card" onClick={() => navigate("/login")}>
+              <div key={item.id} className="cl-card" onClick={() => navigate(`/product/${item.id}`)}>
                 <div className="cl-card-img-wrap">
                   <img src={item.photoURL} alt={item.name} className="cl-card-img" />
                   {item.tag && <span className={`cl-badge cl-badge-${item.tag.toLowerCase()}`}>{item.tag}</span>}
@@ -160,7 +160,7 @@ const ClothingList = () => {
                       <span className="cl-currency">৳</span>
                       <span className="cl-price">{item.price}</span>
                     </div>
-                    <button className="cl-buy-btn" onClick={(e) => { e.stopPropagation(); navigate("/login"); }}>
+                    <button className="cl-buy-btn" onClick={(e) => { e.stopPropagation(); navigate(`/product/${item.id}`); }}>
                       Buy Now
                     </button>
                   </div>

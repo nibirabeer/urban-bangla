@@ -20,6 +20,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import AdminPanel from "./pages/AdminPanel";
+import ProductPage from "./pages/ProductPage";
 import "./App.css";
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
           <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/admin"   element={<AdminRoute><AdminPanel /></AdminRoute>} />
+          <Route path="/product/:id" element={<ProtectedRoute><ProductPage /></ProtectedRoute>} />
         </Routes>
 
         <Footer />
