@@ -165,8 +165,8 @@
 }
 .db-item-card:hover .db-item-hover-overlay { opacity: 1; }
 .db-item-hover-label {
-  background: var(--white);
-  color: #060606;
+  background: var(--gold);
+  color: #000;
   font-family: var(--font-bangla);
   font-size: 12px; font-weight: 700;
   padding: 6px 16px; border-radius: 100px;

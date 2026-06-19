@@ -1,33 +1,33 @@
 :root {
-  /* URBAN বাংলা Brand Colors */
-  --black:       #0a0a0a;
-  --off-black:   #111111;
-  --card-bg:     #141414;
-  --border:      #1e1e1e;
-  --border-2:    #2a2a2a;
+  /* URBAN বাংলা — logo palette: black · off-white · tan gold */
+  --black:       #000000;   /* pure black — logo background */
+  --off-black:   #0d0d0d;
+  --card-bg:     #111111;
+  --border:      #1c1c1c;
+  --border-2:    #272727;
 
-  /* Brand Palette – B&W editorial */
-  --gold:        #888888;   /* gray (secondary text) */
-  --gold-light:  #aaaaaa;
-  --gold-dark:   #666666;
+  /* Logo tan/gold — sampled from বা letterform in the logo mark */
+  --gold:        #C4A882;
+  --gold-light:  #D4B896;
+  --gold-dark:   #A08862;
 
-  /* Accent: white replaces green */
-  --green:       #F5F2EC;   /* white (for text accents, active states) */
-  --green-light: #FFFFFF;
-  --green-bright:#FFFFFF;   /* electric accent → white */
+  /* Primary accent = logo gold (replaces green) */
+  --green:       #C4A882;
+  --green-light: #D4B896;
+  --green-bright:#C4A882;
 
-  /* Error states: light gray (keeps readable) */
-  --red:         #cccccc;
-  --red-dark:    #aaaaaa;
+  /* Error — warm muted red so it stays readable on black */
+  --red:         #C88080;
+  --red-dark:    #A06060;
 
-  /* B&W accent */
-  --accent:      #F5F2EC;   /* white — replaces green/gold for buttons */
-  --accent-text: #060606;   /* black text ON white buttons */
+  /* B&W accent for pure-white buttons */
+  --accent:      #F5F2EC;
+  --accent-text: #000000;
 
-  --white:       #F5F2EC;
-  --white-2:     #E8E4DC;
-  --muted:       #666666;
-  --muted-2:     #444444;
+  --white:       #F5F2EC;   /* off-white — logo ও letterform */
+  --white-2:     #C0BCB5;
+  --muted:       #555555;
+  --muted-2:     #333333;
 
   /* Typography */
   --font-display: 'Teko', sans-serif;

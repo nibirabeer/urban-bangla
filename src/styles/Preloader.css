@@ -1,33 +1,68 @@
+/* Preloader — letters drop, gold line sweeps, screen slides up */
+
 .pre-wrap {
   position: fixed; inset: 0; z-index: 9999;
-  background: #060606;
+  background: #000;
   display: flex; align-items: center; justify-content: center;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition: transform 0.65s cubic-bezier(0.76, 0, 0.24, 1);
 }
-.pre-wrap.pre-out { opacity: 0; visibility: hidden; pointer-events: none; }
-
-.pre-content {
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+.pre-wrap.pre-exit {
+  transform: translateY(-100%);
 }
-.pre-content.pre-visible { opacity: 1; transform: none; }
 
-.pre-line-1 {
+.pre-inner { text-align: center; user-select: none; }
+
+/* ── Letter drop ── */
+.pre-letters {
+  display: flex; justify-content: center;
+  line-height: 0.85;
+  gap: 0;
+}
+
+.pre-letter {
   font-family: var(--font-display);
-  font-size: clamp(64px, 15vw, 140px);
+  font-size: clamp(80px, 18vw, 180px);
   font-weight: 700;
-  letter-spacing: 12px;
   color: #F5F2EC;
-  line-height: 1;
-  margin: 0;
+  letter-spacing: 0;
+  display: block;
+
+  opacity: 0;
+  transform: translateY(-60px);
+  animation: pre-drop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.pre-line-2 {
+
+@keyframes pre-drop {
+  to { opacity: 1; transform: none; }
+}
+
+/* ── Gold sweep line ── */
+.pre-gold-line {
+  height: 2px;
+  background: #C4A882;
+  width: 0;
+  margin: 10px auto 10px;
+  animation: pre-line-sweep 0.45s cubic-bezier(0.4, 0, 0.2, 1) 0.52s forwards;
+}
+
+@keyframes pre-line-sweep {
+  to { width: 100%; }
+}
+
+/* ── বাংলা fade up in gold ── */
+.pre-bangla {
   font-family: var(--font-bangla);
-  font-size: clamp(28px, 6vw, 56px);
+  font-size: clamp(16px, 3.5vw, 34px);
   font-weight: 700;
-  color: #888;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
+  color: #C4A882;
   margin: 0;
+
+  opacity: 0;
+  transform: translateY(10px);
+  animation: pre-up 0.4s ease 0.75s forwards;
+}
+
+@keyframes pre-up {
+  to { opacity: 1; transform: none; }
 }

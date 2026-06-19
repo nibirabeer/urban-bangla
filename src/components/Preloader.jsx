@@ -1,21 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Preloader.css";
 
+const LETTERS = "URBAN".split("");
+
 const Preloader = ({ onDone }) => {
-  const [phase, setPhase] = useState(0); // 0=in, 1=hold, 2=out
+  const [exit, setExit] = useState(false);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase(1), 200);
-    const t2 = setTimeout(() => setPhase(2), 1400);
-    const t3 = setTimeout(onDone, 1900);
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+    const t1 = setTimeout(() => setExit(true), 1600);
+    const t2 = setTimeout(onDone, 2200);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
   }, [onDone]);
 
   return (
-    <div className={`pre-wrap ${phase >= 2 ? "pre-out" : ""}`}>
-      <div className={`pre-content ${phase >= 1 ? "pre-visible" : ""}`}>
-        <p className="pre-line-1">URBAN</p>
-        <p className="pre-line-2">বাংলা</p>
+    <div className={`pre-wrap ${exit ? "pre-exit" : ""}`}>
+      <div className="pre-inner">
+        <div className="pre-letters">
+          {LETTERS.map((l, i) => (
+            <span
+              key={i}
+              className="pre-letter"
+              style={{ animationDelay: `${0.06 + i * 0.07}s` }}
+            >
+              {l}
+            </span>
+          ))}
+        </div>
+        <div className="pre-gold-line" />
+        <p className="pre-bangla">বাংলা</p>
       </div>
     </div>
   );

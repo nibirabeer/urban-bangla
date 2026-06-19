@@ -73,7 +73,7 @@
   font-family: var(--font-bangla);
   font-size: clamp(40px, 8vw, 100px);
   font-weight: 700;
-  color: var(--muted);
+  color: var(--gold);
   letter-spacing: 2px;
   margin-top: 8px;
   animation: wh-fade-up 0.8s ease 0.2s both;
@@ -239,7 +239,7 @@
 .wh-card-price {
   font-family: var(--font-bangla);
   font-size: 15px; font-weight: 700;
-  color: var(--muted);
+  color: var(--gold);
   margin: 0;
 }
 

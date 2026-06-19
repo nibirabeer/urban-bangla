@@ -256,13 +256,13 @@
 
 .pp-add-btn {
   width: 100%; padding: 14px;
-  background: var(--green); color: #fff;
+  background: var(--gold); color: #000;
   border: none; border-radius: 10px;
   font-size: 15px; font-weight: 700;
   display: flex; align-items: center; justify-content: center; gap: 8px;
   transition: background 0.18s, transform 0.1s;
 }
-.pp-add-btn:hover:not(:disabled) { background: var(--green-bright); }
+.pp-add-btn:hover:not(:disabled) { background: var(--gold-light); }
 .pp-add-btn:active:not(:disabled) { transform: scale(0.98); }
 .pp-add-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
