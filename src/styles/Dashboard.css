@@ -67,7 +67,7 @@
   transition: background-color 0.18s, border-color 0.18s, color 0.18s;
 }
 .db-cat-btn:hover  { border-color: var(--gold-dark); color: var(--white); }
-.db-cat-btn.active { background: var(--white); border-color: var(--white); color: #060606; }
+.db-cat-btn.active { background: var(--gold); border-color: var(--gold); color: var(--black); }
 
 /* Promo banners */
 .db-promos { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
@@ -178,7 +178,7 @@
 
 .db-item-tag {
   position: absolute; top: 10px; left: 10px;
-  background: var(--white); color: #060606;
+  background: var(--gold); color: var(--black);
   font-size: 9px; font-weight: 800; letter-spacing: 1px;
   text-transform: uppercase; padding: 4px 10px; border-radius: 100px;
 }

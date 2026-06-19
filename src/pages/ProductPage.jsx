@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { db } from "../services/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, getDocs, collection } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { ChevronLeft, ChevronRight, ShoppingCart, Check, ArrowLeft } from "lucide-react";
 import { useCart } from "../context/CartContext";
@@ -33,6 +33,7 @@ const ProductPage = () => {
   const [customUnit, setCustomUnit] = useState("ft");
   const [customErr, setCustomErr] = useState(false);
   const [addedMsg, setAddedMsg] = useState("");
+  const [related, setRelated] = useState([]);
   const touchStartX = useRef(null);
   const { addItem, openCart, loading: cartLoading } = useCart();
 
@@ -50,6 +51,20 @@ const ProductPage = () => {
     };
     fetch_();
   }, [id]);
+
+  useEffect(() => {
+    if (!item) return;
+    const fetchRelated = async () => {
+      try {
+        const snap = await getDocs(collection(db, "clothing"));
+        const all = snap.docs
+          .map(d => ({ id: d.id, ...d.data() }))
+          .filter(p => p.display && p.id !== item.id && p.category === item.category);
+        setRelated(all);
+      } catch { /* silent */ }
+    };
+    fetchRelated();
+  }, [item?.id, item?.category]);
 
   const photos = item
     ? (item.photoURLs?.length ? item.photoURLs : (item.photoURL ? [item.photoURL] : []))
@@ -255,6 +270,38 @@ const ProductPage = () => {
             )}
           </div>
         </div>
+
+        {/* ── Related products ── */}
+        {related.length > 0 && (
+          <section className="pp-related">
+            <div className="pp-related-head">
+              <h2 className="pp-related-title">More {item.category}s</h2>
+              <p className="pp-related-sub">{related.length} item{related.length !== 1 ? "s" : ""}</p>
+            </div>
+            <div className="pp-related-grid">
+              {related.map(r => {
+                const altImg = r.photoURLs?.length > 1 ? r.photoURLs[1] : null;
+                return (
+                  <div
+                    key={r.id}
+                    className="pp-rel-card"
+                    onClick={() => { navigate(`/product/${r.id}`); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                  >
+                    <div className="pp-rel-img-wrap">
+                      <img src={r.photoURL} alt={r.name} className="pp-rel-img pp-rel-img-main" />
+                      {altImg && <img src={altImg} alt="" className="pp-rel-img pp-rel-img-alt" />}
+                      {r.tag && <span className="pp-rel-badge">{r.tag}</span>}
+                    </div>
+                    <div className="pp-rel-info">
+                      <h3 className="pp-rel-name">{r.name}</h3>
+                      <p className="pp-rel-price">৳{r.price}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
       </div>
     </div>
   );

@@ -184,15 +184,18 @@
 }
 
 .about-close-btn {
-  background: var(--white);
-  color: #060606;
+  background: var(--gold);
+  color: var(--black);
   border: none;
   padding: 11px 28px;
   border-radius: 8px;
   font-family: var(--font-bangla);
   font-size: 14px;
   font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s;
 }
+.about-close-btn:hover { background: var(--gold-light); }
 
 /* Tablet: show hamburger, slide-down menu */
 @media (max-width: 900px) {

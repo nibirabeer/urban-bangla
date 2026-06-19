@@ -120,8 +120,8 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--white);
-  color: #060606;
+  background: var(--gold);
+  color: var(--black);
   border: none;
   padding: 14px 32px;
   border-radius: 10px;
@@ -131,7 +131,7 @@
   box-shadow: none;
   transition: transform 0.2s, background 0.2s;
 }
-.cl-hero-cta:hover { background: #fff; transform: translateY(-2px); }
+.cl-hero-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
 
 .cl-hero-cta-sec {
   display: inline-flex;
@@ -237,7 +237,7 @@
   white-space: nowrap; flex-shrink: 0;
 }
 .cl-filter-btn:hover { border-color: var(--gold-dark); color: var(--white); }
-.cl-filter-btn.active { background: var(--white); border-color: var(--white); color: #060606; }
+.cl-filter-btn.active { background: var(--gold); border-color: var(--gold); color: var(--black); }
 
 .cl-empty { text-align: center; padding: 80px 0; color: var(--muted-2); font-size: 16px; }
 
@@ -334,8 +334,8 @@
 .cl-price { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--white); letter-spacing: 1px; }
 
 .cl-buy-btn {
-  background: var(--white);
-  color: #060606;
+  background: var(--gold);
+  color: var(--black);
   border: none;
   padding: 8px 18px;
   border-radius: 8px;

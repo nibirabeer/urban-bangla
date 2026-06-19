@@ -115,15 +115,15 @@
 /* ── BUTTONS ── */
 .wh-btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--white);
-  color: #060606;
+  background: var(--gold);
+  color: var(--black);
   border: none; padding: 14px 28px; border-radius: 6px;
   font-family: var(--font-bangla); font-size: 14px; font-weight: 700;
   letter-spacing: 0.5px;
   transition: background 0.2s, transform 0.15s;
   cursor: pointer;
 }
-.wh-btn-primary:hover { background: #fff; transform: translateY(-2px); }
+.wh-btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
 
 .wh-btn-ghost {
   background: transparent;
@@ -219,7 +219,7 @@
 
 .wh-card-badge {
   position: absolute; top: 10px; left: 10px; z-index: 3;
-  background: var(--white); color: #060606;
+  background: var(--gold); color: var(--black);
   font-size: 9px; font-weight: 800; letter-spacing: 1.5px;
   text-transform: uppercase; padding: 3px 10px;
 }

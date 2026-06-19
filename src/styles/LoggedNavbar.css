@@ -243,8 +243,8 @@
   height: 18px;
   padding: 0 5px;
   border-radius: 999px;
-  background: var(--white);
-  color: #060606;
+  background: var(--gold);
+  color: var(--black);
   font-size: 10px;
   font-weight: 700;
   margin-left: 4px;
@@ -272,7 +272,7 @@
   transition: background-color 0.15s, border-color 0.15s, color 0.15s;
 }
 .lnav-theme-btn:hover { border-color: var(--border-2); color: var(--white); background: var(--border); }
-.lnav-theme-btn.active { background: var(--white); border-color: var(--white); color: #060606; }
+.lnav-theme-btn.active { background: var(--gold); border-color: var(--gold); color: var(--black); }
 
 /* Sign out */
 .lnav-dd-logout {
@@ -352,11 +352,11 @@
   height: 19px;
   padding: 0 5px;
   border-radius: 999px;
-  background: var(--white);
-  color: #060606;
+  background: var(--gold);
+  color: var(--black);
   font-size: 10px;
   font-weight: 800;
   line-height: 19px;
   text-align: center;
-  border: 2px solid var(--black);
+  border: 2px solid var(--off-black);
 }
